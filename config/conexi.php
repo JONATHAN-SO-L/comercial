@@ -1,9 +1,9 @@
 <?php
 
-$user="veco";
-$pw="Vec83Dv19iSa@";
+$user="";
+$pw="";
 $host="localhost";
-$db="veco_sims_devecchi";
+$db="";
 
 $mysqli = new mysqli($host, $user, $pw, $db);
 
