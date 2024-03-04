@@ -1,9 +1,9 @@
 <?php
 
-$user="veco";
-$pwd="Vec83Dv19iSa@";
+$user="";
+$pwd="";
 $host="localhost";
-$db="veco_sims_devecchi";
+$db="";
 
 try {
 	$con = new PDO("mysql:host=$host;dbname=$db", $user, $pwd);      
