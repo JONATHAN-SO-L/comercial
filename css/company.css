@@ -1,0 +1,21 @@
+.empresa_pic {
+	height: 60px;
+	width: 60px;
+	border-radius: 50px;
+	border: solid;
+	float: left;
+}
+
+.form {
+	margin: 5px auto;
+}
+
+.volver {
+	float: right;
+}
+
+.volver_pic {
+	height: 20px;
+	width: 20px;
+	border-radius: 10px;
+}

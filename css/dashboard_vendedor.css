@@ -1,0 +1,21 @@
+.nuevo_lev {
+	margin: 0 15px;
+}
+
+.agregar {
+	width: 30px;
+	height: 25px;
+	border-radius: 10px;
+}
+
+.see {
+	height: 25px;
+	width: 25px;
+	border-radius: 10px;
+}
+
+.edit {
+	height: 27px;
+	width: 27px;
+	border-radius: 10px;
+}
