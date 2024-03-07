@@ -328,7 +328,7 @@ $uma = $_SESSION['uma'];
 				<option value="Modulo">Módulo</option>
 				<option value="Difusor tipo F">Difusor tipo F</option>
 			</select><br>
-			<label><strong>Ubicación del Gel:</strong></label>
+			<label><strong>Empaque:</strong></label>
 			<select name="ubicacion_gel_etp1" class="form-control" required>
 				<option></option>
 				<option value="N/A">No aplica</option>
