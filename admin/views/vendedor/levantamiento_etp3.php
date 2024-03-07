@@ -160,11 +160,11 @@ $uma = $_SESSION['uma'];
 			<label><strong>Gasto:</strong></label>
 			<input type="text" name="gasto_etp3" class="form-control" required placeholder="Ingresa el gasto" maxlength="20"><br>
 			<label><strong>Alto Nominal:</strong></label>
-			<input type="number" step="any" name="alto_nom_etp3" class="form-control" required placeholder="Ingresa el alto" maxlength="10"><br>
+			<input type="number" min="0" step="any" name="alto_nom_etp3" class="form-control" required placeholder="Ingresa el alto" maxlength="10"><br>
 			<label><strong>Frente Nominal:</strong></label>
-			<input type="number" step="any" name="frente_nom_etp3" class="form-control" required placeholder="Ingresa el frente" maxlength="10"><br>
+			<input type="number" min="0" step="any" name="frente_nom_etp3" class="form-control" required placeholder="Ingresa el frente" maxlength="10"><br>
 			<label><strong>Fondo Nominal:</strong></label>
-			<input type="number" step="any" name="fondo_nom_etp3" class="form-control" required placeholder="Ingresa el fondo" maxlength="10"><br>
+			<input type="number" min="0" step="any" name="fondo_nom_etp3" class="form-control" required placeholder="Ingresa el fondo" maxlength="10"><br>
 			<label><strong>Unidad de Medida Nominal:</strong></label>
 			<select name="um_nominal_etp3" class="form-control" required>
 				<option></option>
@@ -188,7 +188,7 @@ $uma = $_SESSION['uma'];
 				<option value="Triplay">Triplay</option-->
 			</select><br>
 			<label><strong>Espesor del marco:</strong></label>
-			<input type="number" name="espesor_etp3" step="any" class="form-control" required placeholder="Agrega el espesor del marco" maxlength="10"><br>
+			<input type="number" min="0" name="espesor_etp3" step="any" class="form-control" required placeholder="Agrega el espesor del marco" maxlength="10"><br>
 			<label><strong>Unidad de Medida Espesor:</strong></label>
 			<select name="um_espesor_etp3" class="form-control" required>
 				<option></option>
@@ -253,7 +253,7 @@ $uma = $_SESSION['uma'];
 				<option value="Verde con blanco">Verde con blanco</option>
 			</select><br>
 			<label><strong>Bolsas:</strong></label>
-			<input type="number" name="bolsas_etp3" class="form-control" required placeholder="Ingresa el número de bolsas" maxlength="5"><br>
+			<input type="number" min="0" name="bolsas_etp3" class="form-control" required placeholder="Ingresa el número de bolsas" maxlength="5"><br>
 			<label><strong>Media adherida al marco:</strong></label>
 			<select name="media_ad_etp3" class="form-control" required>
 				<option></option>
@@ -261,7 +261,7 @@ $uma = $_SESSION['uma'];
 				<option value="Si">Si</option>
 			</select><br>
 			<label><strong>Número de Separadores:</strong></label>
-			<input type="number" name="num_separadores_etp3" class="form-control" required placeholder="Ingresa el número de separadores" maxlength="5"><br>
+			<input type="number" min="0" name="num_separadores_etp3" class="form-control" required placeholder="Ingresa el número de separadores" maxlength="5"><br>
 			<label><strong>Separador:</strong></label>
 			<select name="separador_etp3" class="form-control" required>
 				<option></option>
@@ -366,11 +366,11 @@ $uma = $_SESSION['uma'];
 				<option value="Si">Si</option>
 			</select><br>
 			<label><strong>Alto Real:</strong></label>
-			<input type="number" step="any" name="alto_real_etp3" class="form-control" required placeholder="Ingresa el alto" maxlength="10"><br>
+			<input type="number" min="0" step="any" name="alto_real_etp3" class="form-control" required placeholder="Ingresa el alto" maxlength="10"><br>
 			<label><strong>Frente Real:</strong></label>
-			<input type="number" step="any" name="frente_real_etp3" class="form-control" required placeholder="Ingresa el frente" maxlength="10"><br>
+			<input type="number" min="0" step="any" name="frente_real_etp3" class="form-control" required placeholder="Ingresa el frente" maxlength="10"><br>
 			<label><strong>Fondo Real:</strong></label>
-			<input type="number" step="any" name="fondo_real_etp3" class="form-control" required placeholder="Ingresa el fondo" maxlength="10"><br>
+			<input type="number" min="0" step="any" name="fondo_real_etp3" class="form-control" required placeholder="Ingresa el fondo" maxlength="10"><br>
 			<label><strong>Unidad de Medida Real:</strong></label>
 			<select name="um_real_etp3" class="form-control" required>
 				<option></option>
@@ -397,11 +397,11 @@ $uma = $_SESSION['uma'];
 			<label><strong>Marca:</strong></label>
 			<input type="text" name="marca_etp3" class="form-control" required placeholder="Ingresa la marca" maxlength="10"><br>
 			<label><strong>Capacidad:</strong></label>
-			<input type="number" name="capacidad_etp3" class="form-control" required placeholder="Ingresa la capacidad" maxlength="10"><br>
+			<input type="number" min="0" name="capacidad_etp3" class="form-control" required placeholder="Ingresa la capacidad" maxlength="10"><br>
 			<label><strong>CPI:</strong></label>
-			<input type="number" name="cpi_etp3" class="form-control" required placeholder="Anota el valor correspondiente" maxlength="10"><br>
+			<input type="number" min="0" name="cpi_etp3" class="form-control" required placeholder="Anota el valor correspondiente" maxlength="10"><br>
 			<label><strong>Capacidad Instalada:</strong></label>
-			<input type="number" name="capacidad_instalada_etp3" class="form-control" required placeholder="Ingresa la capacidad instalada" maxlength="10"><br>
+			<input type="number" min="0" name="capacidad_instalada_etp3" class="form-control" required placeholder="Ingresa la capacidad instalada" maxlength="10"><br>
 
 			<p class="alert alert-warinig"><center><strong>8 MB</strong> Es el tamaño máximo permitido para fotografías e imágenes.</p></center><br>
 
