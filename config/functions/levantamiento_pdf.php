@@ -127,12 +127,27 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 					}
 				}
 
-				$pdf->Cell(30,5, $rel -> razon_social,1,0,'C');
+				/**********************************************
+				AJUSTE DE VALORES EN CAMPO DE ACUERDO AL TAMAÑO
+				**********************************************/
+				$empresa = ucfirst($rel -> razon_social);
+				$empresa_wrap = wordwrap($empresa, 25, "\n", false);
+				$empresa_sub = substr($empresa_wrap, 0, 12);
+
+				$comentarios = ucfirst($value -> comentarios_etp3);
+				$cometarios_wrap = wordwrap($comentarios, 50, "\n", false);
+				$comentarios_sub = substr($cometarios_wrap, 0, 25);
+
+				$observaciones = ucfirst($value -> observaciones_etp3);
+				$observaciones_wrap = wordwrap($observaciones, 50, "\n", false);
+				$observaciones_sub = substr($observaciones_wrap, 0, 25);
+
+				$pdf->Cell(30,5, $empresa_sub,1,0,'C');
 				$pdf->Cell(30,5, $edi -> descripcion,1,0,'C');
 				$pdf->Cell(30,5, $local -> ubicacion,1,0,'C');
 				$pdf->Cell(30,5, $value -> uma,1,0,'C');
-				$pdf->Cell(40,5, $value -> comentarios_etp3,1,0,'C');
-				$pdf->Cell(40,5, $value -> observaciones_etp3,1,0,'C');
+				$pdf->Cell(40,5, $comentarios_sub,1,0,'C');
+				$pdf->Cell(40,5, $observaciones_sub,1,0,'C');
 				$pdf->Cell(40,5, $value -> fecha_hora_inicio,1,0,'C');
 				$pdf->Cell(50,5, $value -> fecha_hora_modificacion,1,0,'C');
 				$pdf->Cell(50,5, $value -> fecha_hora_fin,1,0,'C');
