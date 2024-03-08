@@ -4,7 +4,7 @@
 	<div class="container-fluid">
 		<div>
 			<a class="navbar-brand">
-				<img src="../../../assets/img/jefatura_profile.png" alt="Perfil de Vendedor" style="width:45px;" class="rounded-pill">
+				<img src="../../../assets/img/jefatura_profile.png" alt="Perfil de Vendedor" style="width:50px; border: solid;" class="rounded-pill">
 			</a>
 		</div>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">

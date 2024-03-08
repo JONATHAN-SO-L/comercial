@@ -177,20 +177,52 @@ if (isset($_POST['guardar_etp1'])) {
 			if ($size1 || $size2 || $size3 || $size4 <= $size_max) {
 				$val_up_data_w_pic;
 				echo "<script>alert('Captura de datos exitosa')</script>";
-				echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/levantamiento_etp2.php?'.$uma.'">';
+				switch ($_SESSION['tipo']) {
+					case 'J':
+					echo '<meta http-equiv="refresh" content="0;../../../admin/views/jefatura/levantamiento_etp2.php?'.$uma.'">';
+					break;
+
+					case 'V':
+					echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/levantamiento_etp2.php?'.$uma.'">';
+					break;
+				}
 			} else {
 				echo "<script>alert('ERROR 004: No se logró capturar la información, se superó el espacio máximo de 8 MB para imágenes')</script>";
-				echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/levantamiento_etp1.php?'.$uma.'">';
+				switch ($_SESSION['tipo']) {
+					case 'J':
+					echo '<meta http-equiv="refresh" content="0;../../../admin/views/jefatura/levantamiento_etp1.php?'.$uma.'">';
+					break;
+
+					case 'V':
+					echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/levantamiento_etp1.php?'.$uma.'">';
+					break;
+				}
 			}
 		} else {
 			$val_up_data;
 			echo "<script>alert('Captura de datos exitosa')</script>";
-			echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/levantamiento_etp2.php?'.$uma.'">';
+			switch ($_SESSION['tipo']) {
+					case 'J':
+					echo '<meta http-equiv="refresh" content="0;../../../admin/views/jefatura/levantamiento_etp2.php?'.$uma.'">';
+					break;
+
+					case 'V':
+					echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/levantamiento_etp2.php?'.$uma.'">';
+					break;
+				}
 		}
 	} else {
 		$val_up_data;
 		echo "<script>alert('Captura de datos exitosa')</script>";
-		echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/levantamiento_etp2.php?'.$uma.'">';
+		switch ($_SESSION['tipo']) {
+					case 'J':
+					echo '<meta http-equiv="refresh" content="0;../../../admin/views/jefatura/levantamiento_etp2.php?'.$uma.'">';
+					break;
+
+					case 'V':
+					echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/levantamiento_etp2.php?'.$uma.'">';
+					break;
+				}
 	}
 
 } else {

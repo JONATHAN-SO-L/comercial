@@ -189,7 +189,16 @@ if (isset($_POST['guardar_etp3'])) {
 				echo '<meta http-equiv="refresh" content="0;../../../index.php">';
 			} else {
 				echo "<script>alert('ERROR 004: No se logró capturar la información, se superó el espacio máximo de 8 MB para imágenes')</script>";
-				echo '<meta http-equiv="refresh" content="0;../../../index.php">';
+				switch ($_SESSION['tipo']) {
+					case 'J':
+					echo '<meta http-equiv="refresh" content="0;../../../admin/views/jefatura/levantamiento_etp3.php?'.$uma.'">';
+					break;
+
+					case 'V':
+					echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/levantamiento_etp3.php?'.$uma.'">';
+					break;
+
+				}
 			}
 		} else {
 			$val_up_data;

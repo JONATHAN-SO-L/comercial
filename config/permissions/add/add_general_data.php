@@ -3,7 +3,7 @@ session_start();
 
 if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 
-require '../../conex.php';
+	require '../../conex.php';
 
 /************************
 Recepción de datos
@@ -35,7 +35,17 @@ if ($val_search['uma'] == '') {
 	****************/
 	$up_data = $con->prepare("INSERT INTO levantamientos (empresa, edificio, ubicacion, uma, fecha_hora_inicio, vendedor) VALUES (?, ?, ?, ?, ?, ?);");
 	$val_up_data = $up_data->execute([$empresa, $edificio, $ubicacion, $uma, $fecha_hora_inicio, $vendedor]);
-	echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/levantamiento_etp1.php?'.$uma_global.'">';
+
+	switch ($_SESSION['tipo']) {
+		case 'J':
+		echo '<meta http-equiv="refresh" content="0;../../../admin/views/jefatura/levantamiento_etp1.php?'.$uma_global.'">';
+		break;
+
+		case 'V':
+		echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/levantamiento_etp1.php?'.$uma_global.'">';
+		break;
+	}
+	
 } else {
 	/*****************************************
 	Redirección al ya estar registrada la UMA
@@ -43,11 +53,21 @@ if ($val_search['uma'] == '') {
 	include '../../../assets/navs/links.php'; ?>
 	<br><div class="container-sm alert alert-danger">
 		<center><strong>ERROR 001:</strong> La UMA <strong><?php echo $uma; ?></strong> ya existe, por favor verifica que la información sea correcta.</center><br>
-		<center><a href="../../../admin/views/vendedor/levantamiento.php" class="btn btn-sm btn-danger"><strong>Verificar datos</strong></a></center>
+		<?php
+		switch ($_SESSION['tipo']) {
+			case 'J':
+			echo '<center><a href="../../../admin/views/jefatura/levantamientos.php" class="btn btn-sm btn-danger"><strong>Verificar datos</strong></a></center>';
+			break;
+
+			case 'V':
+			echo '<center><a href="../../../admin/views/vendedor/levantamiento.php" class="btn btn-sm btn-danger"><strong>Verificar datos</strong></a></center>';
+			break;
+		}
+		?>
 	</div>
 <?php } }else {
-		echo '<meta http-equiv="refresh" content="0;../../../../index.php">';
-	}
+	echo '<meta http-equiv="refresh" content="0;../../../../index.php">';
+}
 
 include '../../../assets/spinner.php';
 
