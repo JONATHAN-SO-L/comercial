@@ -1,10 +1,11 @@
-<?php include 'links.php'; ?>
+<?php session_start();
+include 'links.php'; ?>
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
 	<div class="container-fluid">
 		<div>
 			<a class="navbar-brand">
-				<img src="../img/admin_profile.png" alt="Perfil de Vendedor" style="width:50px;" class="rounded-pill">
+				<img src="../../../assets/img/admin_profile.png" alt="Perfil de Vendedor" style="width:50px;" class="rounded-pill">
 			</a>
 		</div>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
@@ -13,17 +14,18 @@
 		<div class="collapse navbar-collapse" id="collapsibleNavbar">
 			<ul class="navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link nombre_vendedor"><strong>JONATHAN</strong></a>
+					<a class="nav-link nombre_vendedor"><strong><?php echo $_SESSION['nombre'] ?></strong></a>
 				</li>
-				<li class="nav-item">
+				<!--li class="nav-item">
 					<a class="nav-link" href="#">Levantamientos</a>
-				</li>
+				</li-->
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Ajustes</a>
 					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="#">Contraseñas</a></li>
-						<li><a class="dropdown-item" href="#">Usuarios</a></li>
-						<li><a class="dropdown-item" href="#">Reiniciar</a></li>
+						<li><a class="dropdown-item" href="../../../config/permissions/add/add_user.php">Alta de Usuarios</a></li>
+						<li><a class="dropdown-item" href="#.php">Lista de Usuarios</a></li>
+						<li><a class="dropdown-item" href="change_pass.php">Cambio de Contraseñas</a></li>
+						<li><a class="dropdown-item" href="#">Reiniciar base de datos</a></li>
 					</ul>
 				</li>
 				<li class="nav-item dropdown">
@@ -43,9 +45,6 @@
 					</ul>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Reportes</a>
-				</li>
-				<li class="nav-item">
 					<a class="nav-link" href="#">Cuadrillas</a>
 				</li>
 				<li class="nav-item">
@@ -55,7 +54,8 @@
 					<a class="nav-link levantamientos" href="https://veco.lat/soporte.php" target="_blank">Soporte Técnico</a>
 				</li>
 				<li class="logout nav-item">
-					<a class="logout-button nav-link" href="">Cerrar Sesión</a>
+					<!--a class="logout-button nav-link" href="">Cerrar Sesión</a-->
+					<a class="logout-button nav-link btn btn-sm btn-danger" href="../../../config/sessions/logout.php"><strong>Cerrar Sesión</strong> <img class="logout_img" src="../../../../comercial/assets/img/salir.png"></a>
 				</li>
 			</ul>
 		</div>
@@ -90,5 +90,11 @@
 		background-color: orange;
 		border-radius: 5px;
 		color: red;
+	}
+
+	.logout_img {
+		height: 25px;
+		width: 25px;
+		border-radius: 10px;
 	}
 </style>
