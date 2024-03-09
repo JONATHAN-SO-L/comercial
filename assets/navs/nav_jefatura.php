@@ -21,9 +21,9 @@
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Alta de Clientes</a>
 					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="#">Empresa</a></li>
-						<li><a class="dropdown-item" href="#">Edificio</a></li>
-						<li><a class="dropdown-item" href="#">Ubicación</a></li>
+						<li><a class="dropdown-item" href="empresa.php">Empresa</a></li>
+						<li><a class="dropdown-item" href="edificio.php">Edificio</a></li>
+						<li><a class="dropdown-item" href="ubicacion.php">Ubicación</a></li>
 					</ul>
 				</li>
 				<li class="nav-item dropdown">
