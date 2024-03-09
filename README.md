@@ -5,7 +5,7 @@ NOTA: Los levantamientos están pensados para hacerse una sola vez
 
 Misma que permite registar las 3 Etapas de 3 Filtros de una UMA en el Levantamiento, se permite agregar hasta 4 fotos por UMA y se automatiza la generación del formato autorrellenado "FV-06-8-010"
 
-Versión:v1.0.0
+Versión: v1.0.0
 
 Status: Beta
 
