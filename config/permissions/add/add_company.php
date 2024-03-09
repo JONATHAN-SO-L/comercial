@@ -38,15 +38,37 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 
 			$val_up_company = $up_company->execute([$rfc, $razon_social, $calle_empresa, $num_ext_empresa, $num_int_empresa, $colonia_empresa, $municipio_empresa, $entidad_federativa_empresa, $cp_empresa, $nombre_contacto_empresa, $puesto_contacto_empresa, $correo_contacto_empresa, $telefono_contacto_empresa, $vendedor]);
 			echo "<script>alert('Empresa guardada con éxito')</script>";
-			echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/empresa.php">';
+			
+			switch ($_SESSION['tipo']) {
+				case 'J':
+				echo '<meta http-equiv="refresh" content="0;../../../admin/views/jefatura/empresa.php">';
+				break;
+
+				case 'V':
+				echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/empresa.php">';
+				break;
+			}
+
 		} else {
 			/***********************************
 			Redirección al ya existir la empresa
 			***********************************/
 			include '../../../assets/navs/links.php'; ?>
 			<br><div class="container-sm alert alert-danger">
-			<center><strong>ERROR 001:</strong> La empresa <strong><?php echo $razon_social; ?></strong> ya existe, por favor verifica que la información sea correcta.</center><br>
-			<center><a href="../../../admin/views/vendedor/empresa.php" class="btn btn-sm btn-danger"><strong>Verificar datos</strong></a></center>
+				<center><strong>ERROR 001:</strong> La empresa <strong><?php echo $razon_social; ?></strong> ya existe, por favor verifica que la información sea correcta.</center><br>
+				<?php
+
+				switch ($_SESSION['tipo']) {
+					case 'J':
+					echo '<center><a href="../../../admin/views/jefatura/empresa.php" class="btn btn-sm btn-danger"><strong>Verificar datos</strong></a></center>';
+					break;
+
+					case 'V':
+					echo '<center><a href="../../../admin/views/vendedor/empresa.php" class="btn btn-sm btn-danger"><strong>Verificar datos</strong></a></center>';
+					break;
+				}
+
+				?>
 			</div>
 		<?php }
 
@@ -54,7 +76,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 		echo '<meta http-equiv="refresh" content="0;../../../../index.php">';
 	}
 } else {
-		echo '<meta http-equiv="refresh" content="0;../../../../index.php">';
-	}
+	echo '<meta http-equiv="refresh" content="0;../../../../index.php">';
+}
 
 ?>

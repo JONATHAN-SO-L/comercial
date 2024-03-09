@@ -22,7 +22,17 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 
 			$val_up_location = $up_location->execute([$empresa_id, $edificio_id, $ubicacion, $requisitos_acc, $vendedor]);
 			echo "<script>alert('Ubicación guardada con éxito')</script>";
-			echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/ubicacion.php">';
+
+			switch ($_SESSION['tipo']) {
+				case 'J':
+				echo '<meta http-equiv="refresh" content="0;../../../admin/views/jefatura/ubicacion.php">';
+				break;
+
+				case 'V':
+				echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/ubicacion.php">';
+				break;
+			}
+			
 		} else {
 			/***************************************
 			Redirección al ya existir la descripción
@@ -30,7 +40,17 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 			include '../../../assets/navs/links.php'; ?>
 			<br><div class="container-sm alert alert-danger">
 				<center><strong>ERROR 001:</strong> La ubicacion <strong><?php echo $ubicacion; ?></strong> ya existe, por favor verifica que la información sea correcta.</center><br>
-				<center><a href="../../../admin/views/vendedor/ubicacion.php" class="btn btn-sm btn-danger"><strong>Verificar datos</strong></a></center>
+				<?php
+				switch ($_SESSION['tipo']) {
+					case 'J':
+					echo '<center><a href="../../../admin/views/jefatura/ubicacion.php" class="btn btn-sm btn-danger"><strong>Verificar datos</strong></a></center>';
+					break;
+
+					case 'V':
+					echo '<center><a href="../../../admin/views/vendedor/ubicacion.php" class="btn btn-sm btn-danger"><strong>Verificar datos</strong></a></center>';
+					break;
+				}
+				?>
 			</div>
 		<?php }
 	}

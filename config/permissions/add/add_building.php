@@ -32,7 +32,17 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 
 			$val_up_building = $up_building->execute([$empresa_id, $descripcion, $calle, $numero_exterior, $numero_interior, $colonia, $municipio, $entidad_federativa, $codigo_postal, $contacto_nombre, $contacto_puesto, $contacto_email, $contacto_telefono, $requisitos_acceso, $vendedor]);
 			echo "<script>alert('Edificio guardado con éxito')</script>";
-			echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/edificio.php">';
+
+			switch ($_SESSION['tipo']) {
+				case 'J':
+				echo '<meta http-equiv="refresh" content="0;../../../admin/views/jefatura/edificio.php">';
+				break;
+
+				case 'V':
+				echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/edificio.php">';
+				break;
+			}
+			
 		} else {
 			/***************************************
 			Redirección al ya existir la descripción
@@ -40,7 +50,18 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 			include '../../../assets/navs/links.php'; ?>
 			<br><div class="container-sm alert alert-danger">
 				<center><strong>ERROR 001:</strong> El edificio <strong><?php echo $descripcion; ?></strong> ya existe, por favor verifica que la información sea correcta.</center><br>
-				<center><a href="../../../admin/views/vendedor/edificio.php" class="btn btn-sm btn-danger"><strong>Verificar datos</strong></a></center>
+				<?php
+				switch ($_SESSION['tipo']) {
+					case 'J':
+					echo '<center><a href="../../../admin/views/jefatura/edificio.php" class="btn btn-sm btn-danger"><strong>Verificar datos</strong></a></center>';
+					break;
+
+					case 'V':
+					echo '<center><a href="../../../admin/views/vendedor/edificio.php" class="btn btn-sm btn-danger"><strong>Verificar datos</strong></a></center>';
+					break;
+				}
+
+				?>
 			</div>
 		<?php }
 	}
@@ -48,5 +69,5 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 } else {
 	echo '<meta http-equiv="refresh" content="0;../../../../index.php">';
 }
-	
+
 ?>
