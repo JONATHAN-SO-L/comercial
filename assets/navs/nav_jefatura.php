@@ -16,6 +16,9 @@
 					<a class="nav-link nombre_vendedor"><strong><?php echo $_SESSION['nombre'] ?></strong></a>
 				</li>
 				<li class="nav-item">
+					<a class="nav-link" href="index.php">Inicio</a>
+				</li>
+				<li class="nav-item">
 					<a class="nav-link" href="levantamientos.php">Levantamientos</a>
 				</li>
 				<li class="nav-item dropdown">
@@ -29,9 +32,9 @@
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Lista de Clientes</a>
 					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="#">Empresa</a></li>
-						<li><a class="dropdown-item" href="#">Edificio</a></li>
-						<li><a class="dropdown-item" href="#">Ubicación</a></li>
+						<li><a class="dropdown-item" href="empresas_lista.php">Empresa</a></li>
+						<li><a class="dropdown-item" href="edificios_lista.php">Edificio</a></li>
+						<li><a class="dropdown-item" href="ubicaciones_lista.php">Ubicación</a></li>
 					</ul>
 				</li>
 				<li class="nav-item">
