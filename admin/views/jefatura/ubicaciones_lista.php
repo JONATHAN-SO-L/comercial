@@ -17,7 +17,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) { ?>
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="page-header2"><br>
-						<img class="empresa_pic" src="../../../assets/img/edificio.png" style="margin-right: 15px;"><h1 class="animated lightSpeedIn">Mis ubicaciones</h1>
+						<img class="empresa_pic" src="../../../assets/img/edificio.png" style="margin-right: 15px;"><h1 class="animated lightSpeedIn">Ubicaciones de mi cuadrilla</h1>
 					</div>
 				</div>
 			</div>
