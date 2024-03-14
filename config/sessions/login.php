@@ -23,7 +23,7 @@ if (isset($_POST['acceder'])) {
 	*********************************/
 	if ($val_user -> rowCount() > 0) {
 		foreach ($validate as $value) {
-        	$id_user = $value->id;
+			$id_user = $value->id;
 			$nombre_user = $value->nombre;
 			$correo_user = $value->correo;
 			$usuario_user = $value->usuario;
@@ -36,12 +36,15 @@ if (isset($_POST['acceder'])) {
 		header('Location: 404_error_login.php');
 	}
 
-	/**************************************
+	if ($tipo_user === 'V' && $squad === '') {
+		header('Location: no_squad.php');
+	} else {
+			/**************************************
 	Redirección en base al tipo de usuario
 	**************************************/
 	switch ($tipo_user) {
 		case 'A':
-    	$_SESSION['id'] = $id_user;
+		$_SESSION['id'] = $id_user;
 		$_SESSION['nombre'] = $nombre_user;
 		$_SESSION['correo'] = $correo_user;
 		$_SESSION['usuario'] = $usuario_user;
@@ -52,7 +55,7 @@ if (isset($_POST['acceder'])) {
 		break;
 
 		case 'G':
-    	$_SESSION['id'] = $id_user;
+		$_SESSION['id'] = $id_user;
 		$_SESSION['nombre'] = $nombre_user;
 		$_SESSION['correo'] = $correo_user;
 		$_SESSION['usuario'] = $usuario_user;
@@ -63,7 +66,7 @@ if (isset($_POST['acceder'])) {
 		break;
 
 		case 'J':
-    	$_SESSION['id'] = $id_user;
+		$_SESSION['id'] = $id_user;
 		$_SESSION['nombre'] = $nombre_user;
 		$_SESSION['correo'] = $correo_user;
 		$_SESSION['usuario'] = $usuario_user;
@@ -74,7 +77,7 @@ if (isset($_POST['acceder'])) {
 		break;
 
 		case 'V':
-    	$_SESSION['id'] = $id_user;
+		$_SESSION['id'] = $id_user;
 		$_SESSION['nombre'] = $nombre_user;
 		$_SESSION['correo'] = $correo_user;
 		$_SESSION['usuario'] = $usuario_user;
@@ -87,6 +90,7 @@ if (isset($_POST['acceder'])) {
 		default:
 		echo '<meta http-equiv="refresh" content="0;../../">';
 		break;
+	}
 	}
 
 } else {

@@ -30,6 +30,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 		$pwd = $_POST['password'];
 		$area = $_POST['area'];
 		$tipo_usuario = $_POST['tipo_usuario'];
+		$squad = '';
 
 		/***************************
 		LIMPIEZA DE STRINGS MANUALES
@@ -58,8 +59,8 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 			/***************
 			REGISTRO EN DDBB
 			***************/
-			$reg_data = $con->prepare("INSERT INTO usuario_lev	(nombre, correo, usuario, pwd, area, tipo_usuario) VALUES(?, ?, ?, ?, ?, ?)");
-			$reg_data->execute([$nombre, $correo, $usuario, $pwd_parse, $area, $tipo_usuario]);
+			$reg_data = $con->prepare("INSERT INTO usuario_lev	(nombre, correo, usuario, pwd, area, tipo_usuario, squad) VALUES(?, ?, ?, ?, ?, ?, ?)");
+			$reg_data->execute([$nombre, $correo, $usuario, $pwd_parse, $area, $tipo_usuario, $squad]);
 
 			if ($reg_data) {
 				echo "<script>alert('Registro exitoso')</script>";

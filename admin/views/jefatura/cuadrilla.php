@@ -48,11 +48,11 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 		?>
 
 		<div class="container">
-			<div class="alert alert-danger">
-				<strong>IMPORTANTE:</strong> Selecciona a un vendedor que aún no pertenezca a ninguna cuadrilla
+			<div class="card">
+				<div class="card bg-primary text-white"><center><h6><strong>IMPORTANTE:</strong> Selecciona a un vendedor que aún no pertenezca a ninguna cuadrilla</h6></center></div>
 			</div>
 
-			<form method="POST" action="../../../config/functions/add/add_squad.php">
+			<form class="border border-primary form-control" method="POST" action="../../../config/functions/add/add_squad.php">
 
 				<div class="switches container" align="center">
 

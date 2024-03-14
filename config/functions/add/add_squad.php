@@ -34,7 +34,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 		$up_gang->execute();
 
 		if ($up_gang) {
-			echo "<script>alert('Resgistro exitoso, continúa dando agregando integrantes')</script>";
+			echo "<script>alert('Registro exitoso, continúa agregando integrantes')</script>";
 			echo '<meta http-equiv="refresh" content="0;../../../admin/views/jefatura/cuadrilla.php">';
 		} else {
 			echo "<script>alert('No se logró agregar al integrante, por favor inténtalo de nuevo')</script>";
