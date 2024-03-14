@@ -39,7 +39,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 
 		require '../../../config/conex.php';
 
-		$search_seller = $con->prepare("SELECT nombre, usuario, area, tipo_usuario, squad FROM usuario_lev WHERE tipo_usuario = 'V' AND area = 'Ventas' AND squad = ''");
+		$search_seller = $con->prepare("SELECT nombre, usuario, area, tipo_usuario, squad FROM usuario_lev WHERE tipo_usuario = 'V' AND area = 'Ventas' AND squad = '' ORDER BY nombre ASC");
 		$search_seller->setFetchMode(PDO::FETCH_OBJ);
 		$search_seller->execute();
 
@@ -49,7 +49,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 
 		<div class="container">
 			<div class="alert alert-danger">
-				<strong>IMPORTANTE:</strong> Selecciona a los vendedores que aún no pertenecen a ninguna cuadrilla
+				<strong>IMPORTANTE:</strong> Selecciona a un vendedor que aún no pertenezca a ninguna cuadrilla
 			</div>
 
 			<form method="POST" action="../../../config/functions/add/add_squad.php">
