@@ -30,6 +30,7 @@ if (isset($_POST['acceder'])) {
 			$pass_user = $value->pwd;
 			$area_user = $value->area;
 			$tipo_user = $value->tipo_usuario;
+			$squad = $value->squad;
 		}
 	} else {
 		header('Location: 404_error_login.php');
@@ -46,6 +47,7 @@ if (isset($_POST['acceder'])) {
 		$_SESSION['usuario'] = $usuario_user;
 		$_SESSION['area'] = $area_user;
 		$_SESSION['tipo'] = $tipo_user;
+		$_SESSION['squad'] = $squad;
 		header('Location: ../../admin/views/admin/');
 		break;
 
@@ -56,6 +58,7 @@ if (isset($_POST['acceder'])) {
 		$_SESSION['usuario'] = $usuario_user;
 		$_SESSION['area'] = $area_user;
 		$_SESSION['tipo'] = $tipo_user;
+		$_SESSION['squad'] = $squad;
 		header('Location: ../../admin/views/gerencia/');
 		break;
 
@@ -66,6 +69,7 @@ if (isset($_POST['acceder'])) {
 		$_SESSION['usuario'] = $usuario_user;
 		$_SESSION['area'] = $area_user;
 		$_SESSION['tipo'] = $tipo_user;
+		$_SESSION['squad'] = $squad;
 		header('Location: ../../admin/views/jefatura/');
 		break;
 
@@ -76,6 +80,7 @@ if (isset($_POST['acceder'])) {
 		$_SESSION['usuario'] = $usuario_user;
 		$_SESSION['area'] = $area_user;
 		$_SESSION['tipo'] = $tipo_user;
+		$_SESSION['squad'] = $squad;
 		header('Location: ../../admin/views/vendedor/');
 		break;
 

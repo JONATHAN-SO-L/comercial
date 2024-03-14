@@ -38,7 +38,7 @@
 					</ul>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Integrantes de Cuadrilla</a>
+					<a class="nav-link" href="cuadrilla.php">Integrantes de Cuadrilla</a>
 				</li>
 				<li class="logout nav-item">
 					<a class="logout-button nav-link btn btn-sm btn-danger" href="../../../config/sessions/logout.php"><strong>Cerrar Sesión</strong> <img class="logout_img" src="../../../../comercial/assets/img/salir.png"></a>

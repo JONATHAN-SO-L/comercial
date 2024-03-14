@@ -10,6 +10,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 		$ubicacion = $_POST['descripcion_ubicacion'];
 		$requisitos_acc = $_POST['req_acceso_ubicacion'];
 		$vendedor = $_SESSION['nombre'];
+		$squad = $_SESSION['squad'];
 
 		$search_data = $con->prepare("SELECT * FROM ubicacion WHERE ubicacion = '$ubicacion'");
 		$val_search = $search_data -> fetch();
@@ -18,9 +19,9 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 			/***************
 			Captura de datos
 			****************/
-			$up_location = $con->prepare("INSERT INTO ubicacion (empresa_id, edificio_id, ubicacion, requisitos_acc, vendedor) VALUES (?, ?, ?, ?, ?);");
+			$up_location = $con->prepare("INSERT INTO ubicacion (empresa_id, edificio_id, ubicacion, requisitos_acc, vendedor, squad) VALUES (?, ?, ?, ?, ?, ?);");
 
-			$val_up_location = $up_location->execute([$empresa_id, $edificio_id, $ubicacion, $requisitos_acc, $vendedor]);
+			$val_up_location = $up_location->execute([$empresa_id, $edificio_id, $ubicacion, $requisitos_acc, $vendedor, $squad]);
 			echo "<script>alert('Ubicación guardada con éxito')</script>";
 
 			switch ($_SESSION['tipo']) {

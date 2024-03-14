@@ -20,6 +20,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 		$contacto_telefono = $_POST['telefono_contacto_edificio'];
 		$requisitos_acceso = $_POST['req_acceso_edificio'];
 		$vendedor = $_SESSION['nombre'];
+		$squad = $_SESSION['squad'];
 
 		$search_data = $con->prepare("SELECT * FROM edificio WHERE descripcion = '$descripcion'");
 		$val_search = $search_data -> fetch();
@@ -28,9 +29,9 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 			/***************
 			Captura de datos
 			****************/
-			$up_building = $con->prepare("INSERT INTO edificio (empresa_id, descripcion, calle, numero_exterior, numero_interior, colonia, municipio, entidad_federativa, codigo_postal, contacto_nombre, contacto_puesto, contacto_email, contacto_telefono, requisitos_acceso, vendedor) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
+			$up_building = $con->prepare("INSERT INTO edificio (empresa_id, descripcion, calle, numero_exterior, numero_interior, colonia, municipio, entidad_federativa, codigo_postal, contacto_nombre, contacto_puesto, contacto_email, contacto_telefono, requisitos_acceso, vendedor, squad) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
 
-			$val_up_building = $up_building->execute([$empresa_id, $descripcion, $calle, $numero_exterior, $numero_interior, $colonia, $municipio, $entidad_federativa, $codigo_postal, $contacto_nombre, $contacto_puesto, $contacto_email, $contacto_telefono, $requisitos_acceso, $vendedor]);
+			$val_up_building = $up_building->execute([$empresa_id, $descripcion, $calle, $numero_exterior, $numero_interior, $colonia, $municipio, $entidad_federativa, $codigo_postal, $contacto_nombre, $contacto_puesto, $contacto_email, $contacto_telefono, $requisitos_acceso, $vendedor, $squad]);
 			echo "<script>alert('Edificio guardado con éxito')</script>";
 
 			switch ($_SESSION['tipo']) {

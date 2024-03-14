@@ -15,6 +15,7 @@ $uma = $_POST['uma_lev'];
 $_SESSION['uma'] = $uma;
 $uma_global = $_SESSION['uma'];
 $vendedor = $_SESSION['nombre'];
+$squad = $_SESSION['squad'];
 
 /************************
 Obtención de Hora y Fecha
@@ -33,8 +34,8 @@ if ($val_search['uma'] == '') {
 	/***************
 	Caputra de datos
 	****************/
-	$up_data = $con->prepare("INSERT INTO levantamientos (empresa, edificio, ubicacion, uma, fecha_hora_inicio, vendedor) VALUES (?, ?, ?, ?, ?, ?);");
-	$val_up_data = $up_data->execute([$empresa, $edificio, $ubicacion, $uma, $fecha_hora_inicio, $vendedor]);
+	$up_data = $con->prepare("INSERT INTO levantamientos (empresa, edificio, ubicacion, uma, fecha_hora_inicio, vendedor, squad) VALUES (?, ?, ?, ?, ?, ?, ?);");
+	$val_up_data = $up_data->execute([$empresa, $edificio, $ubicacion, $uma, $fecha_hora_inicio, $vendedor, $squad]);
 
 	switch ($_SESSION['tipo']) {
 		case 'J':

@@ -33,10 +33,10 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) { ?>
 		<?php 
 		require '../../../config/conex.php';
 
-		$vendedor = $_SESSION['nombre'];
+		$squad = $_SESSION['nombre'];
 
 		//Preparación de consulta
-		$data = $con->prepare("SELECT * FROM edificio");
+		$data = $con->prepare("SELECT * FROM edificio WHERE squad = '$squad'");
 		$data->setFetchMode(PDO::FETCH_OBJ);
 		$data->execute();
 

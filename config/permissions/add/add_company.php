@@ -23,6 +23,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 		$correo_contacto_empresa = $_POST['correo_contacto_empresa'];
 		$telefono_contacto_empresa = $_POST['telefono_contacto_empresa'];
 		$vendedor = $_SESSION['nombre'];
+		$squad = $_SESSION['squad'];
 
 		/*******************************
 		Validación de dato no almacenado
@@ -34,9 +35,9 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 			/***************
 			Captura de datos
 			****************/
-			$up_company = $con->prepare("INSERT INTO empresas (rfc, razon_social, calle, numero_exterior, numero_interior, colonia, municipio, entidad_federativa, codigo_postal, contacto_nombre, contacto_puesto, contacto_email, contacto_telefono, vendedor) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
+			$up_company = $con->prepare("INSERT INTO empresas (rfc, razon_social, calle, numero_exterior, numero_interior, colonia, municipio, entidad_federativa, codigo_postal, contacto_nombre, contacto_puesto, contacto_email, contacto_telefono, vendedor, squad) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
 
-			$val_up_company = $up_company->execute([$rfc, $razon_social, $calle_empresa, $num_ext_empresa, $num_int_empresa, $colonia_empresa, $municipio_empresa, $entidad_federativa_empresa, $cp_empresa, $nombre_contacto_empresa, $puesto_contacto_empresa, $correo_contacto_empresa, $telefono_contacto_empresa, $vendedor]);
+			$val_up_company = $up_company->execute([$rfc, $razon_social, $calle_empresa, $num_ext_empresa, $num_int_empresa, $colonia_empresa, $municipio_empresa, $entidad_federativa_empresa, $cp_empresa, $nombre_contacto_empresa, $puesto_contacto_empresa, $correo_contacto_empresa, $telefono_contacto_empresa, $vendedor,$squad]);
 			echo "<script>alert('Empresa guardada con éxito')</script>";
 			
 			switch ($_SESSION['tipo']) {
