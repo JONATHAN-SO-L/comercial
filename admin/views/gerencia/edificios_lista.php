@@ -39,10 +39,6 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 			</div>
 		</div><br>
 
-		<!--------------------------------
-		Búsqueda de levantamientos
-		--------------------------------->
-
 		<!------------------------------
 		Tabla de datos | Dashboard
 		------------------------------->
@@ -90,6 +86,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 				<tr>
 				<th>
 				<a href='../../../config/permissions/mod/mod_edificio.php?".$value -> id_edificio."' class='btn btn-sm btn-warning' title='Editar registro'><img class='edit' src='../../../assets/img/editar.png'></a>
+				<a href='../../../config/permissions/mod/reasign_build_admin.php?".$value->id_edificio."' class='btn btn-sm btn-primary' title='Reasingar registro'><img class='edit' src='../../../assets/img/reasignar.png'></a>
 				<a href='../../../config/permissions/drop/drop_edificio.php?".$value -> id_edificio."' class='btn btn-sm btn-danger' title='Eliminar registro'><img class='edit' src='../../../assets/img/borrar.png'></a>
 				</th>
 				<th>".$rel -> razon_social."</th>

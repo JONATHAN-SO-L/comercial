@@ -22,9 +22,6 @@ include 'links.php'; ?>
 				<!--li class="nav-item">
 					<a class="nav-link levantamientos" href="../../../config/permissions/search/buscar_filtro.php">Buscar Filtros</a>
 				</li-->
-				<li class="nav-item">
-					<a class="nav-link levantamientos" href="../../../assets/lib/reports/FV-06-8-010_formatoSGC.php" target="_blank">Formato Levantamientos SGC</a>
-				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Clientes</a>
 					<ul class="dropdown-menu">
@@ -32,6 +29,16 @@ include 'links.php'; ?>
 						<li><a class="dropdown-item" href="../../../admin/views/gerencia/edificios_lista.php">Edificios</a></li>
 						<li><a class="dropdown-item" href="../../../admin/views/gerencia/ubicaciones_lista.php">Ubicaciones</a></li>
 					</ul>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Jefes Comerciales</a>
+					<ul class="dropdown-menu">
+						<li><a class="dropdown-item" href="jefes_lista.php">Ver Jefes</a></li>
+						<li><a class="dropdown-item" href="jefes.php">Asignar Jefes</a></li>
+					</ul>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link levantamientos" href="../../../assets/lib/reports/FV-06-8-010_formatoSGC.php" target="_blank">Formato Levantamientos SGC</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link levantamientos" href="../../../config/permissions/mod/change_pass.php">Cambiar contraseña privada</a>
