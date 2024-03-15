@@ -23,10 +23,6 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) { ?>
 			</div>
 		</div><br>
 
-	<!--------------------------------
-		Búsqueda de levantamientos
-		--------------------------------->
-
 	<!------------------------------
 		Tabla de datos | Dashboard
 		------------------------------->
@@ -62,7 +58,10 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) { ?>
 				echo 
 				"<tbody>
 				<tr>
-				<th><a href='../../../config/permissions/mod/mod_empresa.php?".$value->id."' class='btn btn-sm btn-warning' title='Editar registro'><img class='edit' src='../../../assets/img/editar.png'></a></td>
+				<th>
+				<a href='../../../config/permissions/mod/mod_empresa.php?".$value->id."' class='btn btn-sm btn-warning' title='Editar registro'><img class='edit' src='../../../assets/img/editar.png'></a>
+				<a href='../../../config/permissions/mod/reasign_company.php?".$value->id."' class='btn btn-sm btn-primary' title='Reasignar registro'><img class='edit' src='../../../assets/img/reasignar.png'></a>
+				</td>
 				<th>".$value -> razon_social."</th>
 				<th>".$value -> rfc."</th>
 				<th>".$value -> entidad_federativa."</th>

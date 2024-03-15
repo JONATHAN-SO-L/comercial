@@ -25,7 +25,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 		<link rel="stylesheet" type="text/css" href="../../../css/dashboard_vendedor.css">
 		<link rel="stylesheet" type="text/css" href="../../../css/company.css">
 	</head>
-	<body><br><br><br>
+	<body><br><br><br><br>
 		<a href="levantamientos.php" class="btn btn-primary nuevo_lev"><img class="agregar" src="../../../assets/img/agregar.png"> <strong>Nuevo Levantamiento</strong></a>
 
 		<div class="container" >
@@ -124,7 +124,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 				<th>
 				<a href='../../../assets/lib/reports/FV-06-8-010.php?".$value -> uma."' class='btn btn-sm btn-success' target='_blank' title='Ver PDF'><img class='see' src='../../../assets/img/pdf.png'></a>
 				<a href='../../../config/permissions/mod/mod_lev.php?".$value -> uma."' class='btn btn-sm btn-warning' title='Editar registro'><img class='edit' src='../../../assets/img/editar.png'></a>
-				<!--a href='../../../config/permissions/drop/drop_lev.php?".$value -> uma."' class='btn btn-sm btn-danger' title='Eliminar registro'><img class='edit' src='../../../assets/img/borrar.png'></a-->
+				<a href='../../../config/permissions/mod/reasign_lev.php?".$value -> uma."' class='btn btn-sm btn-primary' title='Reasignar registro'><img class='edit' src='../../../assets/img/reasignar.png'></a>
 				</th>
 				<th>".$rel -> razon_social."</th>
 				<th>".$edi -> descripcion."</th>
