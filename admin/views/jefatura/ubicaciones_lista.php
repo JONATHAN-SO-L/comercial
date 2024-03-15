@@ -23,10 +23,6 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) { ?>
 			</div>
 		</div><br>
 
-		<!--------------------------------
-		Búsqueda de levantamientos
-		--------------------------------->
-
 		<!------------------------------
 		Tabla de datos | Dashboard
 		------------------------------->
@@ -83,7 +79,10 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) { ?>
 				echo 
 				"<tbody>
 				<tr>
-				<th><a href='../../../config/permissions/mod/mod_ubicacion.php?".$value->id_ubicacion."' class='btn btn-sm btn-warning' title='Editar registro'><img class='edit' src='../../../assets/img/editar.png'></a></td>
+				<th>
+				<a href='../../../config/permissions/mod/mod_ubicacion.php?".$value->id_ubicacion."' class='btn btn-sm btn-warning' title='Editar registro'><img class='edit' src='../../../assets/img/editar.png'></a>
+				<a href='../../../config/permissions/mod/reasign_location.php?".$value->id_ubicacion."' class='btn btn-sm btn-primary' title='Reasignar registro'><img class='edit' src='../../../assets/img/reasignar.png'></a>
+				</td>
 				<th>".$rs -> razon_social."</th>
 				<th>".$edi -> descripcion."</th>
 				<th>".$value -> ubicacion."</th>
