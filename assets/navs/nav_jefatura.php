@@ -40,9 +40,15 @@
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Cuadrilla</a>
 					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="cuadrilla.php">Agregar Integrantes</a></li>
 						<li><a class="dropdown-item" href="cuadrilla_lista.php">Ver Integrantes</a></li>
+						<li><a class="dropdown-item" href="cuadrilla.php">Agregar Integrantes</a></li>
 					</ul>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link levantamientos" href="../../../config/permissions/mod/change_pass.php">Cambiar contraseña privada</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link levantamientos" href="https://veco.lat/soporte.php" target="_blank">Soporte Técnico</a>
 				</li>
 				<li class="logout nav-item">
 					<a class="logout-button nav-link btn btn-sm btn-danger" href="../../../config/sessions/logout.php"><strong>Cerrar Sesión</strong> <img class="logout_img" src="../../../../comercial/assets/img/salir.png"></a>
