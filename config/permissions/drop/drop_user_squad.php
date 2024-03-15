@@ -52,7 +52,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 			<div class="card">
 				<div class="card bg-danger text-white">
 					<center>
-						<h4><strong>¿Estás de acuerdo en elminiar este integrante de la cuadrilla?</strong></h4>
+						<h4><strong>¿Estás de acuerdo en eliminar este integrante de la cuadrilla?</strong></h4>
 					</center>
 				</div>
 			</div>
@@ -76,7 +76,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 					}
 					?>
 
-					<input type="submit" name="drop_empresa" class="btn btn-danger" value="Eliminar integante">
+					<input type="submit" name="drop_empresa" class="btn btn-danger" value="Eliminar integrante">
 				</center><br>
 			</form>
 
