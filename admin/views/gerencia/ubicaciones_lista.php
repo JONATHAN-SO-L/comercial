@@ -101,6 +101,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) { switch ($_SESSION['tipo']) {
 				<tr>
 				<th>
 				<a href='../../../config/permissions/mod/mod_ubicacion.php?".$value -> id_ubicacion."' class='btn btn-sm btn-warning' title='Editar registro'><img class='edit' src='../../../assets/img/editar.png'></a>
+				<a href='../../../config/permissions/mod/reasign_location_admin.php?".$value->id_ubicacion."' class='btn btn-sm btn-primary' title='Reasignar registro'><img class='edit' src='../../../assets/img/reasignar.png'></a>
 				<a href='../../../config/permissions/drop/drop_ubicacion.php?".$value -> id_ubicacion."' class='btn btn-sm btn-danger' title='Eliminar registro'><img class='edit' src='../../../assets/img/borrar.png'></a>
 				</th>
 				<th>".$rs -> razon_social."</th>
