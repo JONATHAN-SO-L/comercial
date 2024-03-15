@@ -50,7 +50,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 	</head>
 	<body><br><br>
 		<div class="container col-sm-8 panel panel-body"><br><br>
-			<img class="empresa_pic" src="../../../assets/img/captura_informacion.png" style="margin-right: 15px;"><h3 style="margin-top: 10px;">Reasignar Empresa: <strong><?php echo $edificio; ?></strong></h3><br>
+			<img class="empresa_pic" src="../../../assets/img/captura_informacion.png" style="margin-right: 15px;"><h3 style="margin-top: 10px;">Reasignar Edificio: <strong><?php echo $edificio; ?></strong></h3><br>
 			<div class="card">
 				<div class="card bg-danger text-white"><center><h6><strong>Para poder reasignar un edificio existente debes de seleccionar el vendedor de tu cuadrilla a quien deseas asignarlo</strong></h6></center></div>
 			</div>
