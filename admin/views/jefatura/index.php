@@ -12,10 +12,6 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 		case 'V':
 		echo '<meta http-equiv="refresh" content="0;../vendedor">';
 		break;
-		
-		default:
-		
-		break;
 	}
 	?>
 	<!DOCTYPE html>
@@ -59,8 +55,14 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 		<?php
 		require '../../../config/conex.php';
 
+		/****************************************
+		Variable que define la cuadrilla del jefe
+		****************************************/
+		$squad = $_SESSION['nombre'];
+
 		//Preparación de consulta
-		$data = $con->prepare("SELECT * FROM levantamientos");
+		$data = $con->prepare("SELECT * FROM levantamientos WHERE squad = :squad");
+		$data->bindValue(':squad', $squad);
 		$data->setFetchMode(PDO::FETCH_OBJ);
 		$data->execute();
 
@@ -139,7 +141,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 			echo "</table>
 			</div>";
 		} else {
-			echo '<br><div class="alert alert-danger container"><center><strong><h3>No hay levantamientos registrados</h3></strong></center></div>';
+			echo '<br><div class="alert alert-danger container"><center><strong><h3>No hay levantamientos registrados en la cuadrilla</h3></strong></center></div>';
 			echo '<script>console.log("ERROR 100: Fallo al mostrar datos, no hay datos")</script>';
 			exit();
 		} ?>
