@@ -9,7 +9,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 		break;
 	}
 
-	$usuario = $_SERVER['QUERY_STRING'];echo $usuario;
+	$usuario = $_SERVER['QUERY_STRING'];
 	$squad = '';
 
 	require '../../conex.php';
