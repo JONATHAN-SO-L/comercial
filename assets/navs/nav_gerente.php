@@ -38,6 +38,9 @@ include 'links.php'; ?>
 					</ul>
 				</li>
 				<li class="nav-item">
+				<a class="nav-link levantamientos" href="cuadrilla_lista.php">Cuadrillas</a></li>
+				</li>
+				<li class="nav-item">
 					<a class="nav-link levantamientos" href="../../../assets/lib/reports/FV-06-8-010_formatoSGC.php" target="_blank">Formato Levantamientos SGC</a>
 				</li>
 				<li class="nav-item">
