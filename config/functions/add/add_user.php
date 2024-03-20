@@ -85,6 +85,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 				/****************************************
 				ENVÍO POR CORREO DE ALTA DE PARA SISTEMAS
 				****************************************/
+				$destinatario_sistemas = "tecnicos@veco.lat";
 				$asunto_admin = "Alta de Usuario: ".$usuario."en Portal de Levantamientos";
 				$mensaje_admin = utf8_decode("Estimado(a) Soporte Técnico, se le informa de la alta del usuario: ".$nombre." en el Portal de Levantamientos del Área Comercial\r\n
 				Sus credenciales de acceso son las siguientes:\r\n\r\n
@@ -93,6 +94,8 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 				Enlace: ".$link."\r\n\r\n
 				Saludos Cordiales\r\n Área de sistemas\r\n tecnicos@veco.lat \r\n\r\n
 				Por favor, puede responder a este mensaje como ENTERADO.");
+
+				mail($destinatario_sistemas, $asunto_admin, $mensaje_admin, $cabecera);
 
 				echo "<script>alert('Registro exitoso')</script>";
 				echo '<meta http-equiv="refresh" content="0;../../permissions/add/add_user.php">';
