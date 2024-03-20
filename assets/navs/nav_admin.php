@@ -16,6 +16,9 @@ include 'links.php'; ?>
 				<li class="nav-item">
 					<a class="nav-link nombre_vendedor"><strong><?php echo $_SESSION['nombre'] ?></strong></a>
 				</li>
+				<li class="nav-item">
+					<a class="nav-link nombre_vendedor" href="index.php">Inicio</a>
+				</li>
 				<!--li class="nav-item">
 					<a class="nav-link" href="#">Levantamientos</a>
 				</li-->
@@ -23,9 +26,8 @@ include 'links.php'; ?>
 					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Ajustes</a>
 					<ul class="dropdown-menu">
 						<li><a class="dropdown-item" href="../../../config/permissions/add/add_user.php">Alta de Usuarios</a></li>
-						<li><a class="dropdown-item" href="#.php">Lista de Usuarios</a></li>
+						<li><a class="dropdown-item" href="user_list.php">Lista de Usuarios</a></li>
 						<li><a class="dropdown-item" href="change_pass.php">Cambio de Contraseñas</a></li>
-						<li><a class="dropdown-item" href="#">Reiniciar base de datos</a></li>
 					</ul>
 				</li>
 				<li class="nav-item dropdown">
@@ -46,6 +48,9 @@ include 'links.php'; ?>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="#">Cuadrillas</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link levantamientos" href="../../../assets/lib/reports/FV-06-8-010_formatoSGC.php" target="_blank">Formato Levantamientos SGC</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link levantamientos" href="../../../config/permissions/mod/change_pass.php">Cambiar contraseña privada</a>

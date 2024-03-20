@@ -18,7 +18,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) { ?>
 				<div class="card bg-danger text-white"><center><h6><strong>Para dar de alta un usuario nuevo debes llenar todos los campos del formulario</strong></h6></center></div>
 			</div>
 			<form method="POST" action="../../functions/add/add_user.php" class="border border-danger form-control">
-				<label class="form"><strong>Nombre Completo:</strong></label><br>
+				<label class="form"><strong>Nombre Completo </strong><i><u>(Evita usar acentos)</u></i><strong> :</strong></label><br>
 				<input class="form form-control" type="text" name="nombre_completo" placeholder="Ingresa el nombre completo del usuario, por ejemplo: Juan Arras"  maxlength="100" required><br>
 
 				<label class="form"><strong>Correo Electrónico:</strong></label><br>
