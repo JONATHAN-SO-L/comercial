@@ -13,10 +13,6 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 		case 'V':
 		echo '<meta http-equiv="refresh" content="0;../vendedor">';
 		break;
-		
-		default:
-		
-		break;
 	}
 	?>
 	<!DOCTYPE html>
