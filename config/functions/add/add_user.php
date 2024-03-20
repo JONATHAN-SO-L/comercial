@@ -19,6 +19,8 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 
 	if (isset($_POST['nuevo_usuario'])) {
 
+		$link = "https://veco.lat/comercial/";
+
 		require '../../conex.php';
 
 		/*****************
@@ -63,6 +65,35 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 			$reg_data->execute([$nombre, $correo, $usuario, $pwd_parse, $area, $tipo_usuario, $squad]);
 
 			if ($reg_data) {
+
+				/****************************************
+				ENVÍO POR CORREO DE ALTA DE NUEVO USUARIO
+				****************************************/
+				$cabecera = "From: Soporte Técnico VECO <tecnicos@veco.lat>";
+				$destinatario = $correo;
+				$asunto = "Alta en Portal de Levantamientos";
+				$mensaje_usuario = utf8_decode("Estimado(a) ".$nombre.", sea bienvenido(a) al Portal de Levantamientos del Área Comercial\r\n
+				Sus credenciales de acceso son las siguientes:\r\n\r\n
+				Usuario: ".$usuario."\r\n
+				Contraseña Temporal: ".$pwd."\r\n
+				Enlace: ".$link."\r\n\r\n
+				Saludos Cordiales\r\n Área de sistemas\r\n tecnicos@veco.lat \r\n\r\n
+				Por favor, puede responder a este mensaje como ENTERADO.");
+
+				mail($destinatario, $asunto, $mensaje_usuario, $cabecera);
+
+				/****************************************
+				ENVÍO POR CORREO DE ALTA DE PARA SISTEMAS
+				****************************************/
+				$asunto_admin = "Alta de Usuario: ".$usuario."en Portal de Levantamientos";
+				$mensaje_admin = utf8_decode("Estimado(a) Soporte Técnico, se le informa de la alta del usuario: ".$nombre." en el Portal de Levantamientos del Área Comercial\r\n
+				Sus credenciales de acceso son las siguientes:\r\n\r\n
+				Usuario: ".$usuario."\r\n
+				Contraseña Temporal: ".$pwd."\r\n
+				Enlace: ".$link."\r\n\r\n
+				Saludos Cordiales\r\n Área de sistemas\r\n tecnicos@veco.lat \r\n\r\n
+				Por favor, puede responder a este mensaje como ENTERADO.");
+
 				echo "<script>alert('Registro exitoso')</script>";
 				echo '<meta http-equiv="refresh" content="0;../../permissions/add/add_user.php">';
 			} else {
