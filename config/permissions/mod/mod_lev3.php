@@ -246,7 +246,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 				<?php
 				if ($q_lev1 -> rowCount() > 0) {
 					foreach ($levantamientos_uno as $alto_nominal) {
-						echo '<input type="number" step="any" name="alto_nom_etp3" class="form-control"  placeholder="Ingresa el alto" maxlength="10" value="'.$alto_nominal -> alto_nom_etp3.'"><br>';
+						echo '<input type="number" min="0" step="any" name="alto_nom_etp3" class="form-control"  placeholder="Ingresa el alto" maxlength="10" value="'.$alto_nominal -> alto_nom_etp3.'"><br>';
 					}
 				} else {
 					echo '<br><div class="alert alert-danger container"><center><strong><h3>No hay empresas a modificar</h3></strong></center></div>';
@@ -259,7 +259,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 				<?php
 				if ($q_lev1 -> rowCount() > 0) {
 					foreach ($levantamientos_uno as $frente_nominal) {
-						echo '<input type="number" step="any" name="frente_nom_etp3" class="form-control"  placeholder="Ingresa el frente" maxlength="10" value="'.$frente_nominal -> frente_nom_etp3.'"><br>';
+						echo '<input type="number" min="0" step="any" name="frente_nom_etp3" class="form-control"  placeholder="Ingresa el frente" maxlength="10" value="'.$frente_nominal -> frente_nom_etp3.'"><br>';
 					}
 				} else {
 					echo '<br><div class="alert alert-danger container"><center><strong><h3>No hay empresas a modificar</h3></strong></center></div>';
@@ -272,7 +272,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 				<?php
 				if ($q_lev1 -> rowCount() > 0) {
 					foreach ($levantamientos_uno as $fondo_nominal) {
-						echo '<input type="number" step="any" name="fondo_nom_etp3" class="form-control"  placeholder="Ingresa el fondo" maxlength="10" value="'.$fondo_nominal -> fondo_nom_etp3.'"><br>';
+						echo '<input type="number" min="0" step="any" name="fondo_nom_etp3" class="form-control"  placeholder="Ingresa el fondo" maxlength="10" value="'.$fondo_nominal -> fondo_nom_etp3.'"><br>';
 					}
 				} else {
 					echo '<br><div class="alert alert-danger container"><center><strong><h3>No hay empresas a modificar</h3></strong></center></div>';
@@ -329,7 +329,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 				<?php
 				if ($q_lev1 -> rowCount() > 0) {
 					foreach ($levantamientos_uno as $espesor) {
-						echo '<input type="number" name="espesor_etp3" step="any" class="form-control"  placeholder="Agrega el espesor del marco" maxlength="10" value="'.$espesor -> espesor_etp3.'"><br>';
+						echo '<input type="number" min="0" name="espesor_etp3" step="any" class="form-control"  placeholder="Agrega el espesor del marco" maxlength="10" value="'.$espesor -> espesor_etp3.'"><br>';
 					}
 				} else {
 					echo '<br><div class="alert alert-danger container"><center><strong><h3>No hay empresas a modificar</h3></strong></center></div>';
@@ -449,7 +449,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 				<?php
 				if ($q_lev1 -> rowCount() > 0) {
 					foreach ($levantamientos_uno as $bolsas) {
-						echo '<input type="number" name="bolsas_etp3" class="form-control"  placeholder="Ingresa el número de bolsas" maxlength="5" value="'.$bolsas -> bolsas_etp3.'"><br>';
+						echo '<input type="number" min="0" name="bolsas_etp3" class="form-control"  placeholder="Ingresa el número de bolsas" maxlength="5" value="'.$bolsas -> bolsas_etp3.'"><br>';
 					}
 				} else {
 					echo '<br><div class="alert alert-danger container"><center><strong><h3>No hay empresas a modificar</h3></strong></center></div>';
@@ -479,7 +479,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 				<?php
 				if ($q_lev1 -> rowCount() > 0) {
 					foreach ($levantamientos_uno as $num_separadores) {
-						echo '<input type="number" name="num_separadores_etp3" class="form-control"  placeholder="Ingresa el número de separadores" maxlength="5" value="'.$num_separadores -> num_separadores_etp3.'"><br>';
+						echo '<input type="number" min="0" name="num_separadores_etp3" class="form-control"  placeholder="Ingresa el número de separadores" maxlength="5" value="'.$num_separadores -> num_separadores_etp3.'"><br>';
 					}
 				} else {
 					echo '<br><div class="alert alert-danger container"><center><strong><h3>No hay empresas a modificar</h3></strong></center></div>';
@@ -739,7 +739,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 				<?php
 				if ($q_lev1 -> rowCount() > 0) {
 					foreach ($levantamientos_uno as $alto_real) {
-						echo '<input type="number" step="any" name="alto_real_etp3" class="form-control"  placeholder="Ingresa el alto" maxlength="10" value="'.$alto_real -> alto_real_etp3.'"><br>';
+						echo '<input type="number" min="0" step="any" name="alto_real_etp3" class="form-control"  placeholder="Ingresa el alto" maxlength="10" value="'.$alto_real -> alto_real_etp3.'"><br>';
 					}
 				} else {
 					echo '<br><div class="alert alert-danger container"><center><strong><h3>No hay empresas a modificar</h3></strong></center></div>';
@@ -752,7 +752,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 				<?php
 				if ($q_lev1 -> rowCount() > 0) {
 					foreach ($levantamientos_uno as $frente_real) {
-						echo '<input type="number" step="any" name="frente_real_etp3" class="form-control"  placeholder="Ingresa el frente" maxlength="10" value="'.$frente_real -> frente_real_etp3.'"><br>';
+						echo '<input type="number" min="0" step="any" name="frente_real_etp3" class="form-control"  placeholder="Ingresa el frente" maxlength="10" value="'.$frente_real -> frente_real_etp3.'"><br>';
 					}
 				} else {
 					echo '<br><div class="alert alert-danger container"><center><strong><h3>No hay empresas a modificar</h3></strong></center></div>';
@@ -765,7 +765,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 				<?php
 				if ($q_lev1 -> rowCount() > 0) {
 					foreach ($levantamientos_uno as $fondo_real) {
-						echo '<input type="number" step="any" name="fondo_real_etp3" class="form-control"  placeholder="Ingresa el fondo" maxlength="10" value="'.$fondo_real -> fondo_real_etp3.'"><br>';
+						echo '<input type="number" min="0" step="any" name="fondo_real_etp3" class="form-control"  placeholder="Ingresa el fondo" maxlength="10" value="'.$fondo_real -> fondo_real_etp3.'"><br>';
 					}
 				} else {
 					echo '<br><div class="alert alert-danger container"><center><strong><h3>No hay empresas a modificar</h3></strong></center></div>';
@@ -836,7 +836,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 				<?php
 				if ($q_lev1 -> rowCount() > 0) {
 					foreach ($levantamientos_uno as $capacidad) {
-						echo '<input type="number" name="capacidad_etp3" class="form-control"  placeholder="Ingresa la capacidad" maxlength="10" value="'.$capacidad -> capacidad_etp3.'"><br>';
+						echo '<input type="number" min="0" name="capacidad_etp3" class="form-control"  placeholder="Ingresa la capacidad" maxlength="10" value="'.$capacidad -> capacidad_etp3.'"><br>';
 					}
 				} else {
 					echo '<br><div class="alert alert-danger container"><center><strong><h3>No hay empresas a modificar</h3></strong></center></div>';
@@ -849,7 +849,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 				<?php
 				if ($q_lev1 -> rowCount() > 0) {
 					foreach ($levantamientos_uno as $cpi) {
-						echo '<input type="number" name="cpi_etp3" class="form-control"  placeholder="Anota el valor correspondiente" maxlength="10" value="'.$cpi -> cpi_etp3.'"><br>';
+						echo '<input type="number" min="0" name="cpi_etp3" class="form-control"  placeholder="Anota el valor correspondiente" maxlength="10" value="'.$cpi -> cpi_etp3.'"><br>';
 					}
 				} else {
 					echo '<br><div class="alert alert-danger container"><center><strong><h3>No hay empresas a modificar</h3></strong></center></div>';
@@ -862,7 +862,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 				<?php
 				if ($q_lev1 -> rowCount() > 0) {
 					foreach ($levantamientos_uno as $capcidad_instalada) {
-						echo '<input type="number" name="capacidad_instalada_etp3" class="form-control"  placeholder="Ingresa la capacidad instalada" maxlength="10" value="'.$capcidad_instalada -> capacidad_instalada_etp3.'">';
+						echo '<input type="number" min="0" name="capacidad_instalada_etp3" class="form-control"  placeholder="Ingresa la capacidad instalada" maxlength="10" value="'.$capcidad_instalada -> capacidad_instalada_etp3.'">';
 					}
 				} else {
 					echo '<br><div class="alert alert-danger container"><center><strong><h3>No hay empresas a modificar</h3></strong></center></div>';

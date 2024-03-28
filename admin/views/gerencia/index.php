@@ -119,6 +119,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 				<a href='../../../assets/lib/reports/FV-06-8-010.php?".$value -> uma."' class='btn btn-sm btn-success' target='_blank' title='Ver PDF'><img class='see' src='../../../assets/img/pdf.png'></a>
 				<a href='../../../config/permissions/mod/mod_lev.php?".$value -> uma."' class='btn btn-sm btn-warning' title='Editar registro'><img class='edit' src='../../../assets/img/editar.png'></a>
 				<a href='../../../config/permissions/mod/reasign_lev_admin.php?".$value -> uma."' class='btn btn-sm btn-primary' title='Reasignar registro'><img class='edit' src='../../../assets/img/reasignar.png'></a>
+				<a href='../../../config/permissions/search/lev.php?".$value -> uma."' class='btn btn-sm btn-primary' title='Ver Levantamiento'><img class='see' src='../../../assets/img/ver.png'></a>
 				<a href='../../../config/permissions/drop/drop_lev.php?".$value -> uma."' class='btn btn-sm btn-danger' title='Eliminar registro'><img class='edit' src='../../../assets/img/borrar.png'></a>
 				</th>
 				<th>".$rel -> razon_social."</th>

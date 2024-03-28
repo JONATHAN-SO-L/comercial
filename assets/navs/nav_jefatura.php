@@ -21,6 +21,9 @@
 				<li class="nav-item">
 					<a class="nav-link" href="levantamientos.php">Levantamientos</a>
 				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="aprobaciones.php">Aprobaciones</a>
+				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Alta de Clientes</a>
 					<ul class="dropdown-menu">

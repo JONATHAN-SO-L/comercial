@@ -54,7 +54,43 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 		$comentarios_etp3 = $_POST['comentarios_etp3'];
 		$observaciones_etp3 = $_POST['observaciones_etp3'];
 
-		$up_lev = $con->prepare("UPDATE levantamientos SET
+		switch ($_SESSION['tipo']) {
+			case 'V':
+				$fecha_hora_modificacion = date('Y-m-d H:i:s');
+
+				$up_lev = $con->prepare("UPDATE levantamientos SET
+				codigo_etp3 = ?, descripcion_corta_etp3 = ?, familia_etp3 = ?, modelo_etp3 = ?,
+				tipo_etp3 = ?, eficiencia_etp3 = ?, gasto_etp3 = ?, alto_nom_etp3 = ?,
+				frente_nom_etp3 = ?, fondo_nom_etp3 = ?, um_nominal_etp3 = ?, marco_etp3 = ?,
+				espesor_etp3 = ?, um_espesor_etp3 = ?, media_fil_etp3 = ?, forma_media_fil_etp3 = ?,
+				color_media_fil_etp3 = ?, bolsas_etp3 = ?, media_ad_etp3 = ?, num_separadores_etp3 = ?,
+				separador_etp3 = ?, asa_etp3 = ?, plenum_etp3 = ?, postes_etp3 = ?,
+				rejilla_etp3 = ?, contramarco_etp3 = ?, construccion_etp3 = ?, sello_etp3 = ?,
+				perfil_gel_etp3 = ?, ubicacion_gel_etp3 = ?, temperatura_etp3 = ?, alma_acero_etp3 = ?,
+				invertido_etp3 = ?, alto_real_etp3 = ?, frente_real_etp3 = ?, fondo_real_etp3 = ?,
+				um_real_etp3 = ?, um_venta_etp3 = ?, marca_etp3 = ?, capacidad_etp3 = ?,
+				cpi_etp3 = ?, capacidad_instalada_etp3 = ?, comentarios_etp3 = ?, observaciones_etp3 = ?,
+				fecha_hora_modificacion = ?
+				WHERE uma = ?");
+	
+				$up_lev->execute([
+				$codigo_etp3, $descripcion_corta_etp3, $familia_etp3, $modelo_etp3,
+				$tipo_etp3, $eficiencia_etp3, $gasto_etp3, $alto_nom_etp3,
+				$frente_nom_etp3, $fondo_nom_etp3, $um_nominal_etp3, $marco_etp3,
+				$espesor_etp3, $um_espesor_etp3, $media_fil_etp3, $forma_media_fil_etp3,
+				$color_media_fil_etp3, $bolsas_etp3, $media_ad_etp3, $num_separadores_etp3,
+				$separador_etp3, $asa_etp3, $plenum_etp3, $postes_etp3,
+				$rejilla_etp3, $contramarco_etp3, $construccion_etp3, $sello_etp3,
+				$perfil_gel_etp3, $ubicacion_gel_etp3, $temperatura_etp3, $alma_acero_etp3,
+				$invertido_etp3, $alto_nom_etp3, $frente_real_etp3, $fondo_nom_etp3,
+				$um_nominal_etp3, $um_venta_etp3, $marca_etp3, $capacidad_etp3,
+				$cpi_etp3, $capacidad_instalada_etp3, $comentarios_etp3, $observaciones_etp3,
+				$fecha_hora_modificacion,
+				$uma]);
+			break;
+
+			default:
+			$up_lev = $con->prepare("UPDATE levantamientos SET
 			codigo_etp3 = ?, descripcion_corta_etp3 = ?, familia_etp3 = ?, modelo_etp3 = ?,
 			tipo_etp3 = ?, eficiencia_etp3 = ?, gasto_etp3 = ?, alto_nom_etp3 = ?,
 			frente_nom_etp3 = ?, fondo_nom_etp3 = ?, um_nominal_etp3 = ?, marco_etp3 = ?,
@@ -68,7 +104,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 			cpi_etp3 = ?, capacidad_instalada_etp3 = ?, comentarios_etp3 = ?, observaciones_etp3 = ?
 			WHERE uma = ?");
 
-		$up_lev->execute([
+			$up_lev->execute([
 			$codigo_etp3, $descripcion_corta_etp3, $familia_etp3, $modelo_etp3,
 			$tipo_etp3, $eficiencia_etp3, $gasto_etp3, $alto_nom_etp3,
 			$frente_nom_etp3, $fondo_nom_etp3, $um_nominal_etp3, $marco_etp3,
@@ -81,6 +117,8 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 			$um_nominal_etp3, $um_venta_etp3, $marca_etp3, $capacidad_etp3,
 			$cpi_etp3, $capacidad_instalada_etp3, $comentarios_etp3, $observaciones_etp3,
 			$uma]);
+			break;
+		}
 
 		if ($up_lev) {
 			echo "<script>alert('Etapa 3 actualizada con éxito')</script>";
