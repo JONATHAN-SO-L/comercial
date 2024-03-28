@@ -9,13 +9,15 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
     $uma = $_SERVER['QUERY_STRING']; // UMA del Levantamiento
     $aprobador = $_SESSION['nombre'];
     $solicitante = NULL;
+    $aproval = NULL;
     $fecha_solicitud = NULL;
     $fecha_denied = date('Y-m-d H:i:s');
 
     require '../../conex.php';
 
-    $aprobacion = $con->prepare("UPDATE levantamientos SET sol_mod = :solicitante, fecha_solicitud = :fecha_solicitud WHERE uma = :uma");
+    $aprobacion = $con->prepare("UPDATE levantamientos SET sol_mod = :solicitante, mod_auth = :aproval, fecha_solicitud = :fecha_solicitud WHERE uma = :uma");
     $aprobacion->bindValue(':solicitante', $solicitante);
+    $aprobacion->bindValue(':aproval', $aproval);
     $aprobacion->bindValue(':fecha_solicitud', $fecha_solicitud);
     $aprobacion->bindValue(':uma', $uma);
     $aprobacion->execute();
