@@ -9,14 +9,16 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
     $uma = $_SERVER['QUERY_STRING']; // UMA del Levantamiento
     $solicitante = $_SESSION['nombre'];
     $aprobador = $_SESSION['squad'];
+    $autorizacion = "Pendiente";
 
     $fecha_sol = date('Y-m-d H:i:s'); // Fecha de modificación
     $fecha_solicitud = strftime('%d%b%y');// Fecha de modificación seteada para el SGC
 
     require '../../conex.php';
 
-    $solicitud = $con->prepare("UPDATE levantamientos SET sol_mod = :solicitante, fecha_solicitud = :fecha_solicitud WHERE uma = :uma");
+    $solicitud = $con->prepare("UPDATE levantamientos SET sol_mod = :solicitante, mod_auth = :autorizacion, fecha_solicitud = :fecha_solicitud WHERE uma = :uma");
     $solicitud->bindValue(':solicitante', $solicitante);
+    $solicitud->bindValue(':autorizacion', $autorizacion);
     $solicitud->bindValue(':fecha_solicitud', $fecha_solicitud);
     $solicitud->bindValue(':uma', $uma);
     $solicitud->execute();
