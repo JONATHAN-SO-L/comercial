@@ -91,9 +91,10 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 				<tr>
 				<th>
 				<a href='../../../assets/lib/reports/FV-06-8-010.php?".$value -> uma."' class='btn btn-sm btn-success' target='_blank' title='Ver PDF'><img class='see' src='../../../assets/img/pdf.png'></a>
-				<a href='#' class='btn btn-sm btn-warning' data-bs-toggle='modal' data-bs-target='#myModal' title='Editar registro'><img class='edit' src='../../../assets/img/editar.png'></a>
-				<a href='#' class='btn btn-sm btn-primary' title='Ver Levantamiento'><img class='see' src='../../../assets/img/ver.png'></a>
+				<a href='../../../config/permissions/request/lev.php?".$value -> uma."'class='btn btn-sm btn-warning' title='Editar registro'><img class='edit' src='../../../assets/img/editar.png'></a>
+				<a href='../../../config/permissions/search/lev.php?".$value -> uma."' class='btn btn-sm btn-primary' title='Ver Levantamiento'><img class='see' src='../../../assets/img/ver.png'></a>
 				<!--a href='#' class='btn btn-sm btn-info' title='Enviar por correo'><img class='edit' src='../../../assets/img/enviar.png'></a-->
+				</th>
 				<th>".$rel -> razon_social."</th>
 				<th>".$value -> uma."</th>
 				<th>".$edi -> descripcion."</th>
@@ -105,108 +106,6 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 			}
 			echo "</table>
 			</div>";
-
-			/**********************************************************************
-			Validación de ausencia de autorización en modificación de levantamiento
-			**********************************************************************/
-			$s_auth = $con->prepare("SELECT sol_mod, mod_auth FROM levantamientos WHERE vendedor = :vendedor");
-			$s_auth->bindValue(':vendedor', $vendedor);
-			$s_auth->setFetchMode(PDO::FETCH_OBJ);
-			$s_auth->execute();
-
-			$f_auth = $s_auth->fetchAll();
-
-			if ($s_auth -> rowCount() > 0) {
-				foreach ($f_auth as $item) {
-					$solicitud = $item -> sol_mod;
-					$autorizacion = $item -> mod_auth;
-				}
-			} else {
-				echo '<script>console.log("No hay autorizaciones ni solicitudes")</script>';
-			}
-
-			if ($solicitud == '') {
-				echo '
-				<!-----------------------------------------------------------
-				MODAL PARA SOLICITAR PERMISO DE MODIFICACIÓN DE LEVANTAMIENTO
-				------------------------------------------------------------>
-				<div class="modal fade" id="myModal">
-				<div class="modal-dialog">
-				<div class="modal-content">
-
-					<!-- Header -->
-					<div class="modal-header">
-					<h4 class="modal-title">Solicitud para editar</h4>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-					</div>
-
-					<div class="modal-body">
-					<strong>¿Quieres solicitar a tu jefe directo el permiso para modificar?</strong><br>
-					<i>En caso de ser aprobado, te llegará la notificación por correo</i>
-					</div>
-
-					<div class="modal-footer">
-					<a href="../../../config/functions/request/mod_lev.php?'.$value -> uma.'" class="btn btn-success">Iniciar solicitud</a>
-					<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar solicitud</button>
-					</div>
-
-				</div>
-				</div>
-				</div>';
-			} elseif ($solicitud != '' && $autorizacion == '') {
-				echo '
-				<!-----------------------------------------------------------
-				MODAL PARA SOLICITAR PERMISO DE MODIFICACIÓN DE LEVANTAMIENTO
-				------------------------------------------------------------>
-				<div class="modal fade" id="myModal">
-				<div class="modal-dialog">
-				<div class="modal-content">
-
-					<!-- Header -->
-					<div class="modal-header">
-					<h4 class="modal-title">Solicitud para editar</h4>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-					</div>
-
-					<div class="modal-body">
-					La aprobación está en proceso por parte del Jefe Directo, en cuanto esté aprobado se te hará llegar por correo.
-					</div>
-
-					<div class="modal-footer">
-					<button type="button" class="btn btn-success" data-bs-dismiss="modal">OK</button>
-					</div>
-
-				</div>
-				</div>
-				</div>';
-			} else {
-				echo '
-				<!-----------------------------------------------------------
-				MODAL PARA SOLICITAR PERMISO DE MODIFICACIÓN DE LEVANTAMIENTO
-				------------------------------------------------------------>
-				<div class="modal fade" id="myModal">
-				<div class="modal-dialog">
-				<div class="modal-content">
-
-					<!-- Header -->
-					<div class="modal-header">
-					<h4 class="modal-title">Solicitud para editar</h4>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-					</div>
-
-					<div class="modal-body">
-					¿Quieres modificar los datos de este levantamiento?
-					</div>
-
-					<div class="modal-footer">
-					<button type="button" class="btn btn-success" data-bs-dismiss="modal">Si, modificación</button>
-					<button type="button" class="btn btn-danger" data-bs-dismiss="modal">No, cancelar</button>
-					</div>
-
-				</div>
-				</div>
-				</div>';
-			}
 			
 		} else {
 			echo '<br><div class="alert alert-danger container"><center><strong><h3>No hay levantamientos registrados</h3></strong></center></div>';
