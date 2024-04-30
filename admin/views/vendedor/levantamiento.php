@@ -63,7 +63,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 		</select>
 		<br>
 		<label class="form"><strong>UMA:</strong></label><br>
-		<input class="form form-control" type="number" name="uma_lev" placeholder="Por ejemplo: XXXXX" required maxlength="100"><br>
+		<input class="form form-control" type="number" name="uma_lev" placeholder="Por ejemplo: XXXXX" min="0" max="9999" required maxlength="100"><br>
 		<center><button type="submit" class="btn btn-success"><strong>Guardar</strong></button></center><br>
 	</form><br>
 </div>
