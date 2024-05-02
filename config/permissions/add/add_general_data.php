@@ -39,11 +39,11 @@ if ($val_search['uma'] == '') {
 
 	switch ($_SESSION['tipo']) {
 		case 'J':
-		echo '<meta http-equiv="refresh" content="0;../../../admin/views/jefatura/levantamiento_etp1.php?'.$uma_global.'">';
+		echo '<meta http-equiv="refresh" content="0;../selector/etp.php?'.$uma_global.'">';
 		break;
 
 		case 'V':
-		echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/levantamiento_etp1.php?'.$uma_global.'">';
+		echo '<meta http-equiv="refresh" content="0;../selector/etp.php?'.$uma_global.'">';
 		break;
 	}
 	
