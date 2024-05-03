@@ -9,17 +9,22 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 
         $etapas = $_POST['num_etapas'];
 
-        $insert_tape = $con->prepare("UPDATE levantamientos SET etapas = :etapas WHERE uma = :uma");
-        $insert_tape->bindValue(':etapas', $etapas);
-        $insert_tape->bindValue(':uma', $uma);
-        $insert_tape->execute();
+        if ($etapas > 8) {
+            echo '<script>alert("Ocurrió un error intentándo guardar las etapas del levantamiento, las registradas superan las permitidas, por favor inténtalo de nuevo")</script>';
+            echo '<meta http-equiv="refresh" content="0;../../permissions/selector/etp.php?'.$uma.'">';
+        } else {
+            $insert_tape = $con->prepare("UPDATE levantamientos SET etapas = :etapas WHERE uma = :uma");
+            $insert_tape->bindValue(':etapas', $etapas);
+            $insert_tape->bindValue(':uma', $uma);
+            $insert_tape->execute();
 
-        if ($insert_tape) {
+            if ($insert_tape) {
             //echo '<script>alert("Se registraron exitosamente las etapas que tendrá la UMA: '.$uma.'")</script>';
             echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/sel_tape.php?'.$uma.'">';
-        } else {
+            } else {
             echo '<script>alert("Ocurrió un error intentándo guardar las etapas del levantamiento, por favor inténtalo de nuevo")</script>';
             echo '<meta http-equiv="refresh" content="0;../../permissions/selector/etp.php?'.$uma.'">';
+            }
         }
 
     } else {
