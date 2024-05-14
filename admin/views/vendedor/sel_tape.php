@@ -41,6 +41,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 <div class="row">
     <div class="col-sm-12">
         <div class="page-header"><br>
+            <a href="../vendedor/index.php" class="btn btn-primary volver"><img class="volver_pic" src="../../../assets/img/volver.png"><strong style="margin-left: 5px;">Volver al inicio</strong></a>
             <img class="empresa_pic" src="../../../assets/img/etapas.png" style="margin-right: 15px;"><h1 class="animated lightSpeedIn">Elige la etapa para la UMA: <i><u><?php echo $uma; ?></u></i></h1><br>
         </div>
     </div>
