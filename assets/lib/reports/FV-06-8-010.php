@@ -2757,4 +2757,4 @@ SALIDA DE PDF
 ****************************************************/
 $vendedor = $value->vendedor;
 $pdf->Ln();
-$pdf->output('I','FV-06-8-010 Folio='.$uma.' Vendedor='.$vendedor.'.pdf');
+$pdf->output('I','FV-06-8-010 UMA='.$uma.' Vendedor='.$vendedor.'.pdf');
