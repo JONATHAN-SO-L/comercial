@@ -32,7 +32,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 		<br>
 		<label class="form"><strong>Empresa:</strong></label><br>
 		<select class="form form-control" name="empresa_lev" id="empresa_lev" required>
-			<option value="0"> - Selecciona una empresa -</option>
+			<option value=""> - Selecciona una empresa -</option>
 			<?php
 			$query = $con->prepare("SELECT * FROM empresas WHERE vendedor = :vendedor ORDER BY razon_social ASC");
 			$query->bindParam(':vendedor', $vendedor);
@@ -63,7 +63,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 		</select>
 		<br>
 		<label class="form"><strong>UMA:</strong></label><br>
-		<input class="form form-control" type="number" name="uma_lev" placeholder="Por ejemplo: XXXXX" min="0" max="9999" required maxlength="100"><br>
+		<input class="form form-control" type="number" name="uma_lev" placeholder="Por ejemplo: XXXXX" required min="1" maxlength="100"><br>
 		<center><button type="submit" class="btn btn-success"><strong>Guardar</strong></button></center><br>
 	</form><br>
 </div>

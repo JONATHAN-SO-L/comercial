@@ -35,11 +35,11 @@ $uma = $_SESSION['uma'];
 			ETAPA 1
 			-------------->
 			<label><strong>Código:</strong></label>
-			<input type="text" name="codigo_etp1" class="form-control"  placeholder="Ingresa el código del filtro" maxlength="25"><br>
+			<input type="text" name="codigo_etp6" class="form-control"  placeholder="Ingresa el código del filtro" maxlength="25"><br>
 			<label><strong>Descripción corta:</strong></label>
-			<input type="text" name="descripcion_corta_etp1" class="form-control"  placeholder="Añade una descripción" maxlength="90"><br>
+			<input type="text" name="descripcion_corta_etp6" class="form-control"  placeholder="Añade una descripción" maxlength="90"><br>
 			<label><strong>Familia:</strong></label>
-			<select name="familia_etp1" class="form-control" >
+			<select name="familia_etp6" class="form-control" >
 				<option></option>
 				<option value="ABS">ABS - Absolutos</option>
 				<option value="AT">AT - Alta temperatura</option>
@@ -64,7 +64,7 @@ $uma = $_SESSION['uma'];
 				<option value="Empaque">Empaque</option>
 			</select><br>
 			<label><strong>Modelo:</strong></label>
-			<select name="modelo_etp1" class="form-control" >
+			<select name="modelo_etp6" class="form-control" >
 				<option></option>
 				<option value="A">A - Filtro</option>
 				<option value="HEPA">HEPA - Filtro</option>
@@ -119,14 +119,14 @@ $uma = $_SESSION['uma'];
 				<option value="ROPAFV">ROPAFV - Filtro</option>
 			</select><br>
 			<label><strong>Tipo:</strong></label>
-			<select name="tipo_etp1" class="form-control" >
+			<select name="tipo_etp6" class="form-control" >
 				<option></option>
 				<option value="Cartucho / Rígido">Cartucho / Rígido</option>
 				<option value="Bolsa">Bolsa</option>
 				<option value="Prefiltro">Prefiltro</option>
 			</select><br>
 			<label><strong>Eficiencia:</strong></label>
-			<select name="eficiencia_etp1" class="form-control" >
+			<select name="eficiencia_etp6" class="form-control" >
 				<option></option>
 				<option value="30-35%">30-35% ASHRAE</option>
 				<option value="30-50%">30-50% ASHRAE</option>
@@ -157,15 +157,15 @@ $uma = $_SESSION['uma'];
 				<option value="99.9995%">99.9995% PAO</option>
 			</select><br>
 			<label><strong>Gasto:</strong></label>
-			<input type="text" name="gasto_etp1" class="form-control"  placeholder="Ingresa el gasto" maxlength="20"><br>
+			<input type="text" name="gasto_etp6" class="form-control"  placeholder="Ingresa el gasto" maxlength="20"><br>
 			<label><strong>Alto Nominal:</strong></label>
-			<input type="number" min="0" step="any" name="alto_nom_etp1" class="form-control"  placeholder="Ingresa el alto" maxlength="10"><br>
+			<input type="number" min="0" step="any" name="alto_nom_etp6" class="form-control"  placeholder="Ingresa el alto" maxlength="10"><br>
 			<label><strong>Frente Nominal:</strong></label>
-			<input type="number" min="0" step="any" name="frente_nom_etp1" class="form-control"  placeholder="Ingresa el frente" maxlength="10"><br>
+			<input type="number" min="0" step="any" name="frente_nom_etp6" class="form-control"  placeholder="Ingresa el frente" maxlength="10"><br>
 			<label><strong>Fondo Nominal:</strong></label>
-			<input type="number" min="0" step="any" name="fondo_nom_etp1" class="form-control"  placeholder="Ingresa el fondo" maxlength="10"><br>
+			<input type="number" min="0" step="any" name="fondo_nom_etp6" class="form-control"  placeholder="Ingresa el fondo" maxlength="10"><br>
 			<label><strong>Unidad de Medida Nominal:</strong></label>
-			<select name="um_nominal_etp1" class="form-control" >
+			<select name="um_nominal_etp6" class="form-control" >
 				<option></option>
 				<option value="in">Pulgadas</option>
 				<option value="mm">Milímetros</option>
@@ -174,7 +174,7 @@ $uma = $_SESSION['uma'];
 				<option value="m">Metros</option>
 			</select><br>
 			<label><strong>Material del marco:</strong></label>
-			<select name="marco_etp1" class="form-control" >
+			<select name="marco_etp6" class="form-control" >
 				<option></option>
 				<option value="Acero Inoxidable">Acero Inoxidable</option>
 				<option value="Aluminio">Aluminio</option>
@@ -187,9 +187,9 @@ $uma = $_SESSION['uma'];
 				<option value="Triplay">Triplay</option-->
 			</select><br>
 			<label><strong>Espesor del marco:</strong></label>
-			<input type="number" min="0" name="espesor_etp1" step="any" class="form-control"  placeholder="Agrega el espesor del marco" maxlength="10"><br>
+			<input type="number" min="0" name="espesor_etp6" step="any" class="form-control"  placeholder="Agrega el espesor del marco" maxlength="10"><br>
 			<label><strong>Unidad de Medida Espesor:</strong></label>
-			<select name="um_espesor_etp1" class="form-control" >
+			<select name="um_espesor_etp6" class="form-control" >
 				<option></option>
 				<option value="in">Pulgadas</option>
 				<option value="mm">Milímetros</option>
@@ -198,7 +198,7 @@ $uma = $_SESSION['uma'];
 				<option value="m">Metros</option>
 			</select><br>
 			<label><strong>Media Filtrante:</strong></label>
-			<select name="media_fil_etp1" class="form-control" >
+			<select name="media_fil_etp6" class="form-control" >
 				<option></option>
 				<option value="Aluminio multicapas">Aluminio multicapas</option>
 				<option value="Borosilicato">Borosilicato</option>
@@ -230,7 +230,7 @@ $uma = $_SESSION['uma'];
 				<option value="Poroflex">Poroflex</option>
 			</select><br>
 			<label><strong>Forma de la Media Filtrante:</strong></label>
-			<select name="forma_media_fil_etp1" class="form-control" >
+			<select name="forma_media_fil_etp6" class="form-control" >
 				<option></option>
 				<option value="Plegada">Plegada</option>
 				<option value="Liso">Liso</option>
@@ -238,7 +238,7 @@ $uma = $_SESSION['uma'];
 				<option value="Lisas y plegadas alternas horizontales">Lisas y plegadas alternas horizontales</option>
 			</select><br>
 			<label><strong>Color de la Media Filtrante:</strong></label>
-			<select name="color_media_fil_etp1" class="form-control" >
+			<select name="color_media_fil_etp6" class="form-control" >
 				<option></option>
 				<option value="Amarilla">Amarilla</option>
 				<option value="Azul">Azul</option>
@@ -252,17 +252,17 @@ $uma = $_SESSION['uma'];
 				<option value="Verde con blanco">Verde con blanco</option>
 			</select><br>
 			<label><strong>Bolsas:</strong></label>
-			<input type="number" min="0" name="bolsas_etp1" class="form-control"  placeholder="Ingresa el número de bolsas" maxlength="5"><br>
+			<input type="number" min="0" name="bolsas_etp6" class="form-control"  placeholder="Ingresa el número de bolsas" maxlength="5"><br>
 			<label><strong>Media adherida al marco:</strong></label>
-			<select name="media_ad_etp1" class="form-control" >
+			<select name="media_ad_etp6" class="form-control" >
 				<option></option>
 				<option value="No aplica">No aplica</option>
 				<option value="Si">Si</option>
 			</select><br>
 			<label><strong>Número de Separadores:</strong></label>
-			<input type="number" min="0" name="num_separadores_etp1" class="form-control"  placeholder="Ingresa el número de separadores" maxlength="5"><br>
+			<input type="number" min="0" name="num_separadores_etp6" class="form-control"  placeholder="Ingresa el número de separadores" maxlength="5"><br>
 			<label><strong>Separador:</strong></label>
-			<select name="separador_etp1" class="form-control" >
+			<select name="separador_etp6" class="form-control" >
 				<option></option>
 				<option value="N/A">No aplica</option>
 				<option value="Minipleat">Minipleat</option>
@@ -272,13 +272,13 @@ $uma = $_SESSION['uma'];
 				<option value="Peine Plastico">Peine Plástico</option>
 			</select><br>
 			<label><strong>Asa:</strong></label>
-			<select name="asa_etp1" class="form-control" >
+			<select name="asa_etp6" class="form-control" >
 				<option></option>
 				<option value="1">1</option>
 				<option value="2">2</option>
 			</select><br>
 			<label><strong>Plenum:</strong></label>
-			<select name="plenum_etp1" class="form-control" >
+			<select name="plenum_etp6" class="form-control" >
 				<option></option>
 				<option value="N/A">No aplica</option>
 				<option value="Entrada Aire">Entrada Aire</option>
@@ -286,14 +286,14 @@ $uma = $_SESSION['uma'];
 				<option value="Entrada y Salida de Aire">Entrada y Salida de Aire</option>
 			</select><br>
 			<label><strong>Postes:</strong></label>
-			<select name="postes_etp1" class="form-control" >
+			<select name="postes_etp6" class="form-control" >
 				<option></option>
 				<option value="Plastico">Plástico</option>
 				<option value="Metalicos">Metálicos</option>
 				<option value="Lamina Galvanizada">Lámina Galvanizada</option>
 			</select><br>
 			<label><strong>Rejilla:</strong></label>
-			<select name="rejilla_etp1" class="form-control" >
+			<select name="rejilla_etp6" class="form-control" >
 				<option></option>
 				<option value="No aplica">No aplica</option>
 				<option value="Entrada Aire">Entrada Aire</option>
@@ -301,7 +301,7 @@ $uma = $_SESSION['uma'];
 				<option value="Entrada y Salida de Aire">Entrada y Salida de Aire</option>
 			</select><br>
 			<label><strong>Contramarco:</strong></label>
-			<select name="contramarco_etp1" class="form-control" >
+			<select name="contramarco_etp6" class="form-control" >
 				<option></option>
 				<option value="N/A">No aplica</option>
 				<option value="Entrada Aire">Entrada Aire</option>
@@ -309,19 +309,19 @@ $uma = $_SESSION['uma'];
 				<option value="Entrada y Salida de Aire">Entrada y Salida de Aire</option>
 			</select><br>
 			<label><strong>Construcción:</strong></label>
-			<select name="construccion_etp1" class="form-control" >
+			<select name="construccion_etp6" class="form-control" >
 				<option></option>
 				<option value="No aplica">No aplica</option>
 				<option value="W">W</option>
 			</select><br>
 			<label><strong>Sello:</strong></label>
-			<select name="sello_etp1" class="form-control" >
+			<select name="sello_etp6" class="form-control" >
 				<option></option>
 				<option value="Neopreno">Neopreno</option>
 				<option value="Gel">Gel</option>
 			</select><br>
 			<label><strong>Perfil del Gel:</strong></label>
-			<select name="perfil_gel_etp1" class="form-control" >
+			<select name="perfil_gel_etp6" class="form-control" >
 				<option></option>
 				<option value="No aplica">No aplica</option>
 				<option value="Difusor">Difusor</option>
@@ -329,14 +329,14 @@ $uma = $_SESSION['uma'];
 				<option value="Difusor tipo F">Difusor tipo F</option>
 			</select><br>
 			<label><strong>Empaque:</strong></label>
-			<select name="ubicacion_gel_etp1" class="form-control" >
+			<select name="ubicacion_gel_etp6" class="form-control" >
 				<option></option>
 				<option value="N/A">No aplica</option>
 				<option value="Entrada Aire">Entrada Aire</option>
 				<option value="Salida Aire">Salida Aire</option>
 			</select><br>
 			<label><strong>Alta temperatura:</strong></label>
-			<select name="temperatura_etp1" class="form-control" >
+			<select name="temperatura_etp6" class="form-control" >
 				<option></option>
 				<option value="No aplica">No aplica</option>
 				<option value="160">Hasta 160 Grados centígrados</option>
@@ -354,25 +354,25 @@ $uma = $_SESSION['uma'];
 				<option value="AT">AT – hasta 160 Grados centígrados</option>
 			</select><br>
 			<label><strong>Alma acero:</strong></label>
-			<select name="alma_acero_etp1" class="form-control" >
+			<select name="alma_acero_etp6" class="form-control" >
 				<option></option>
 				<option value="No aplica">No aplica</option>
 				<option value="Si">Si</option>
 			</select><br>
 			<label><strong>Invertido:</strong></label>
-			<select name="invertido_etp1" class="form-control" >
+			<select name="invertido_etp6" class="form-control" >
 				<option></option>
 				<option value="No aplica">No aplica</option>
 				<option value="Si">Si</option>
 			</select><br>
 			<label><strong>Alto Real:</strong></label>
-			<input type="number" min="0" step="any" name="alto_real_etp1" class="form-control"  placeholder="Ingresa el alto" maxlength="10"><br>
+			<input type="number" min="0" step="any" name="alto_real_etp6" class="form-control"  placeholder="Ingresa el alto" maxlength="10"><br>
 			<label><strong>Frente Real:</strong></label>
-			<input type="number" min="0" step="any" name="frente_real_etp1" class="form-control"  placeholder="Ingresa el frente" maxlength="10"><br>
+			<input type="number" min="0" step="any" name="frente_real_etp6" class="form-control"  placeholder="Ingresa el frente" maxlength="10"><br>
 			<label><strong>Fondo Real:</strong></label>
-			<input type="number" min="0" step="any" name="fondo_real_etp1" class="form-control"  placeholder="Ingresa el fondo" maxlength="10"><br>
+			<input type="number" min="0" step="any" name="fondo_real_etp6" class="form-control"  placeholder="Ingresa el fondo" maxlength="10"><br>
 			<label><strong>Unidad de Medida Real:</strong></label>
-			<select name="um_real_etp1" class="form-control" >
+			<select name="um_real_etp6" class="form-control" >
 				<option></option>
 				<option value="in">Pulgadas</option>
 				<option value="mm">Milímetros</option>
@@ -381,7 +381,7 @@ $uma = $_SESSION['uma'];
 				<option value="m">Metros</option>
 			</select><br>
 			<label><strong>UM Venta:</strong></label>
-			<select name="um_venta_etp1" class="form-control" >
+			<select name="um_venta_etp6" class="form-control" >
 				<option></option>
 				<option value="No aplica">No aplica</option>
 				<option value="Horas">Horas</option>
@@ -395,29 +395,29 @@ $uma = $_SESSION['uma'];
 				<option value="Pies cuadrados">Pies cuadrados</option>
 			</select><br>
 			<label><strong>Marca:</strong></label>
-			<input type="text" name="marca_etp1" class="form-control"  placeholder="Ingresa la marca" maxlength="10"><br>
+			<input type="text" name="marca_etp6" class="form-control"  placeholder="Ingresa la marca" maxlength="10"><br>
 			<label><strong>Capacidad:</strong></label>
-			<input type="number" min="0" name="capacidad_etp1" class="form-control"  placeholder="Ingresa la capacidad" maxlength="10"><br>
+			<input type="number" min="0" name="capacidad_etp6" class="form-control"  placeholder="Ingresa la capacidad" maxlength="10"><br>
 			<label><strong>CPI:</strong></label>
-			<input type="number" min="0" name="cpi_etp1" class="form-control"  placeholder="Anota el valor correspondiente" maxlength="10"><br>
+			<input type="number" min="0" name="cpi_etp6" class="form-control"  placeholder="Anota el valor correspondiente" maxlength="10"><br>
 			<label><strong>Capacidad Instalada:</strong></label>
-			<input type="number" min="0" name="capacidad_instalada_etp1" class="form-control"  placeholder="Ingresa la capacidad instalada" maxlength="10"><br>
+			<input type="number" min="0" name="capacidad_instalada_etp6" class="form-control"  placeholder="Ingresa la capacidad instalada" maxlength="10"><br>
 
 			<p class="alert alert-warinig"><center><strong>8 MB</strong> Es el tamaño máximo permitido para fotografías e imágenes.</p></center><br>
 
 			<label><strong>Foto 1 <i>(Opcional | Esta será la que se muestra en el PDF)</i>:</strong></label>
-			<input type="file" name="foto_1_etp1" class="form-control"><br>
+			<input type="file" name="foto_1_etp6" class="form-control"><br>
 			<label><strong>Foto 2 <i>(Opcional)</i>:</strong></label>
-			<input type="file" name="foto_2_etp1" class="form-control"><br>
+			<input type="file" name="foto_2_etp6" class="form-control"><br>
 			<label><strong>Foto 3 <i>(Opcional)</i>:</strong></label>
-			<input type="file" name="foto_3_etp1" class="form-control"><br>
+			<input type="file" name="foto_3_etp6" class="form-control"><br>
 			<label><strong>Foto 4 <i>(Opcional)</i>:</strong></label>
-			<input type="file" name="foto_4_etp1" class="form-control"><br><br>
+			<input type="file" name="foto_4_etp6" class="form-control"><br><br>
 			<label><strong>Comentarios <i>(Opcional)</i>:</strong></label>
-			<textarea name="comentarios_etp1" class="form-control" placeholder="Agrega tus comentarios en este apartado"></textarea><br>
+			<textarea name="comentarios_etp6" class="form-control" placeholder="Agrega tus comentarios en este apartado"></textarea><br>
 			<label><strong>Observaciones <i>(Opcional)</i>:</strong></label>
-			<textarea name="observaciones_etp1" class="form-control" placeholder="Ingresa las observaciones pertinentes aquí"></textarea><br>
-			<center><button type="submit" class="btn btn-success" name="guardar_etp1"><strong>Guardar</strong></button></center><br>
+			<textarea name="observaciones_etp6" class="form-control" placeholder="Ingresa las observaciones pertinentes aquí"></textarea><br>
+			<center><button type="submit" class="btn btn-success" name="guardar_etp6"><strong>Guardar</strong></button></center><br>
 		</form><br>
 	</div>
 
