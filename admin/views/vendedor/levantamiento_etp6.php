@@ -27,12 +27,12 @@ $uma = $_SESSION['uma'];
 			</div>
 		</div>
 		<div class="card">
-			<div class="card bg-danger text-white"><center><h6><strong>ETAPA 1</strong></h6></center></div>
+			<div class="card bg-danger text-white"><center><h6><strong>ETAPA 6</strong></h6></center></div>
 		</div>
 
-		<form class="border border-danger form-control"  method="POST" action="../../../config/permissions/add/add_stage1.php" enctype="multipart/form-data">
+		<form class="border border-danger form-control"  method="POST" action="../../../config/permissions/add/add_stage6.php" enctype="multipart/form-data">
 			<!-------------
-			ETAPA 1
+			ETAPA 6
 			-------------->
 			<label><strong>Código:</strong></label>
 			<input type="text" name="codigo_etp6" class="form-control"  placeholder="Ingresa el código del filtro" maxlength="25"><br>

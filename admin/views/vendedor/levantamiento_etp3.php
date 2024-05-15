@@ -33,7 +33,7 @@ $uma = $_SESSION['uma'];
 
 		<form class="border border-danger form-control" required method="POST" action="../../../config/permissions/add/add_stage3.php" enctype="multipart/form-data">
 			<!-------------
-			ETAPA 2
+			ETAPA 3
 			-------------->
 			<label><strong>Código:</strong></label>
 			<input type="text" name="codigo_etp3" class="form-control" required placeholder="Ingresa el código del filtro" maxlength="25"><br>
