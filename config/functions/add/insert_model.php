@@ -17,7 +17,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
             $up_model->execute([$modelo, $uma]);
             
             if ($up_model) {
-                echo '<script>alert("Se guardó correctamente el modelo seleccionada: '.$modelo.'")</script>';
+                echo '<script>alert("Se guardó correctamente el modelo seleccionado: '.$modelo.'")</script>';
                 echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/levantamiento_etp1.php?'.$uma.'">';
             } else {
                 echo '<script>alert("Ocurrió un problema al intentar guardar el modelo seleccioanda: '.$modelo.'. Por favor inténtalo de nuevo")</script>';
@@ -31,7 +31,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
             $up_model->execute([$modelo, $uma]);
             
             if ($up_model) {
-                echo '<script>alert("Se guardó correctamente el modelo seleccionada: '.$modelo.'")</script>';
+                echo '<script>alert("Se guardó correctamente el modelo seleccionado: '.$modelo.'")</script>';
                 echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/levantamiento_etp2.php?'.$uma.'">';
             } else {
                 echo '<script>alert("Ocurrió un problema al intentar guardar el modelo seleccioanda: '.$modelo.'. Por favor inténtalo de nuevo")</script>';
@@ -44,7 +44,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
             $up_model->execute([$modelo, $uma]);
             
             if ($up_model) {
-                echo '<script>alert("Se guardó correctamente el modelo seleccionada: '.$modelo.'")</script>';
+                echo '<script>alert("Se guardó correctamente el modelo seleccionado: '.$modelo.'")</script>';
                 echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/levantamiento_etp3.php?'.$uma.'">';
             } else {
                 echo '<script>alert("Ocurrió un problema al intentar guardar el modelo seleccioanda: '.$modelo.'. Por favor inténtalo de nuevo")</script>';
@@ -57,7 +57,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
             $up_model->execute([$modelo, $uma]);
             
             if ($up_model) {
-                echo '<script>alert("Se guardó correctamente el modelo seleccionada: '.$modelo.'")</script>';
+                echo '<script>alert("Se guardó correctamente el modelo seleccionado: '.$modelo.'")</script>';
                 echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/levantamiento_etp4.php?'.$uma.'">';
             } else {
                 echo '<script>alert("Ocurrió un problema al intentar guardar el modelo seleccioanda: '.$modelo.'. Por favor inténtalo de nuevo")</script>';
@@ -70,7 +70,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
             $up_model->execute([$modelo, $uma]);
             
             if ($up_model) {
-                echo '<script>alert("Se guardó correctamente el modelo seleccionada: '.$modelo.'")</script>';
+                echo '<script>alert("Se guardó correctamente el modelo seleccionado: '.$modelo.'")</script>';
                 echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/levantamiento_etp5.php?'.$uma.'">';
             } else {
                 echo '<script>alert("Ocurrió un problema al intentar guardar el modelo seleccioanda: '.$modelo.'. Por favor inténtalo de nuevo")</script>';
@@ -83,7 +83,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
             $up_model->execute([$modelo, $uma]);
             
             if ($up_model) {
-                echo '<script>alert("Se guardó correctamente el modelo seleccionada: '.$modelo.'")</script>';
+                echo '<script>alert("Se guardó correctamente el modelo seleccionado: '.$modelo.'")</script>';
                 echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/levantamiento_etp6.php?'.$uma.'">';
             } else {
                 echo '<script>alert("Ocurrió un problema al intentar guardar el modelo seleccioanda: '.$modelo.'. Por favor inténtalo de nuevo")</script>';
@@ -96,7 +96,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
             $up_model->execute([$modelo, $uma]);
             
             if ($up_model) {
-                echo '<script>alert("Se guardó correctamente el modelo seleccionada: '.$modelo.'")</script>';
+                echo '<script>alert("Se guardó correctamente el modelo seleccionado: '.$modelo.'")</script>';
                 echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/levantamiento_etp7.php?'.$uma.'">';
             } else {
                 echo '<script>alert("Ocurrió un problema al intentar guardar el modelo seleccioanda: '.$modelo.'. Por favor inténtalo de nuevo")</script>';
@@ -109,7 +109,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
             $up_model->execute([$modelo, $uma]);
             
             if ($up_model) {
-                echo '<script>alert("Se guardó correctamente el modelo seleccionada: '.$modelo.'")</script>';
+                echo '<script>alert("Se guardó correctamente el modelo seleccionado: '.$modelo.'")</script>';
                 echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/levantamiento_etp8.php?'.$uma.'">';
             } else {
                 echo '<script>alert("Ocurrió un problema al intentar guardar el modelo seleccioanda: '.$modelo.'. Por favor inténtalo de nuevo")</script>';
