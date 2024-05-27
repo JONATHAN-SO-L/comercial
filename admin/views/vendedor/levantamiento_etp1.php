@@ -1,6 +1,9 @@
 <?php 
 session_start(); 
-require '../../../config/conex.php';
+
+if ($_SESSION['nombre'] && $_SESSION['tipo']) {
+
+	require '../../../config/conex.php';
 
 /****************
 Obtención de UMA
@@ -8,6 +11,34 @@ Obtención de UMA
 $uma = $_SERVER['QUERY_STRING'];
 $_SESSION['uma'] = $uma;
 $uma = $_SESSION['uma'];
+
+//Buscar si ya están registrados todos los filtros capturados
+$s_tapes = $con->prepare("SELECT filtros_etp1 FROM levantamientos WHERE uma = :uma");
+$s_tapes->bindValue(':uma', $uma);
+$s_tapes->setFetchMode(PDO::FETCH_OBJ);
+$s_tapes->execute();
+//Encontrar las etapas
+$f_tapes = $s_tapes->fetchAll();
+foreach ($f_tapes as $valor) {
+	$filtros = $valor -> filtros_etp1;
+}
+
+//Buscar si el ciclo ya fue iniciado
+$buscar_loop = $con->prepare("SELECT ciclos FROM levantamientos WHERE uma = :uma");
+$buscar_loop->bindValue(':uma', $uma);
+$buscar_loop->setFetchMode(PDO::FETCH_OBJ);
+$buscar_loop->execute();
+//Encontrar el valor del ciclo
+$encontrar_loop = $buscar_loop->fetchAll();
+foreach ($encontrar_loop as $item) {
+	$ciclo = $item -> ciclos;
+
+	if ($ciclo == NULL) {
+		$ciclo = 1;
+		$up_loop = $con->prepare("UPDATE levantamientos SET ciclos = ? WHERE uma = ?");
+		$up_loop->execute([$ciclo, $uma]);
+		echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/levantamiento_etp1.php?'.$uma.'">';
+	} elseif ($ciclo <= $filtros) {
 ?>
 
 <!DOCTYPE html>
@@ -26,403 +57,542 @@ $uma = $_SESSION['uma'];
 				</div>
 			</div>
 		</div>
-		<div class="card">
-			<div class="card bg-danger text-white"><center><h6><strong>ETAPA 1</strong></h6></center></div>
-		</div>
+		
+		<?php
+			switch ($ciclo) {
+				case '1':
+				//Buscar si ya existe una familia registrada
+				$s_family = $con->prepare("SELECT familia_etp1 FROM levantamientos WHERE uma = :uma");
+				$s_family->bindValue(':uma', $uma);
+				$s_family->setFetchMode(PDO::FETCH_OBJ);
+				$s_family->execute();
 
-		<form class="border border-danger form-control"  method="POST" action="../../../config/permissions/add/add_stage1.php" enctype="multipart/form-data">
-			<!-------------
-			ETAPA 1
-			-------------->
-			<label><strong>Código:</strong></label>
-			<input type="text" name="codigo_etp1" class="form-control"  placeholder="Ingresa el código del filtro" maxlength="25"><br>
-			<label><strong>Descripción corta:</strong></label>
-			<input type="text" name="descripcion_corta_etp1" class="form-control"  placeholder="Añade una descripción" maxlength="90"><br>
-			<label><strong>Familia:</strong></label>
-			<select name="familia_etp1" class="form-control" >
-				<option></option>
-				<option value="ABS">ABS - Absolutos</option>
-				<option value="AT">AT - Alta temperatura</option>
-				<option value="AV">AV - Bolsa</option>
-				<option value="CU">CU - Cubo</option>
-				<option value="FDV">FDV - Eficiencia ASHRAE</option>
-				<option value="HB">HB - Eliminador de humedad</option>
-				<option value="JA">JA - Aluminio</option>
-				<option value="JAM">JAM - Multicapas</option>
-				<option value="JC">JC - Cartón</option>
-				<option value="JG">JG - Galvanizado</option>
-				<option value="JI">JI - Inoxidable</option>
-				<option value="JM">JM - Lavable</option>
-				<option value="JP">JP - Plástico</option>
-				<option value="PAD">PAD - Prefiltro sin marco</option>
-				<option value="PRE">PRE - Rollo</option>
-				<option value="RO">RO - Rollo</option>
-				<option value="Accesorio">Accesorio</option>
-				<option value="Equipo">Equipo</option>
-				<option value="Servicio">Servicio</option>
-				<option value="Componente">Componente</option>
-				<option value="Empaque">Empaque</option>
-			</select><br>
-			<label><strong>Modelo:</strong></label>
-			<select name="modelo_etp1" class="form-control" >
-				<option></option>
-				<option value="A">A - Filtro</option>
-				<option value="HEPA">HEPA - Filtro</option>
-				<option value="AT300">AT300 - Filtro</option>
-				<option value="AV">AV - Filtro</option>
-				<option value="RV">RV - Filtro</option>
-				<option value="RVAV">RVAV - Filtro</option>
-				<option value="FSAV">FSAV - Filtro</option>
-				<option value="CU">CU - Filtro</option>
-				<option value="FDV">FDV - Filtro</option>
-				<option value="HB">HB - Filtro</option>
-				<option value="JA">JA - Filtro</option>
-				<option value="JABR">JABR - Filtro</option>
-				<option value="JAM">JAM - Filtro</option>
-				<option value="JC">JC - Filtro</option>
-				<option value="JCBR">JCBR - Filtro</option>
-				<option value="JCCAI">JCCAI - Filtro</option>
-				<option value="JCFV">JCFV - Filtro</option>
-				<option value="JCM">JCM - Filtro</option>
-				<option value="JG">JG - Filtro</option>
-				<option value="JGBR">JGBR - Filtro</option>
-				<option value="JGCAG">JGCAG - Filtro</option>
-				<option value="JGCAI">JGCAI - Filtro</option>
-				<option value="JGFV">JGFV - Filtro</option>
-				<option value="JGM">JGM - Filtro</option>
-				<option value="JGPER">JGPER - Filtro</option>
-				<option value="JIBR">JIBR - Filtro</option>
-				<option value="JICAI">JICAI - Filtro</option>
-				<option value="JIFV">JIFV - Filtro</option>
-				<option value="JM">JM - Filtro</option>
-				<option value="JMA">JMA - Filtro</option>
-				<option value="JMAFS">JMAFS - Filtro</option>
-				<option value="JMFS">JMFS - Filtro</option>
-				<option value="JMTC">JMTC - Filtro</option>
-				<option value="JP">JP - Filtro</option>
-				<option value="JPBR">JPBR - Filtro</option>
-				<option value="JPFV">JPFV - Filtro</option>
-				<option value="JPM">JPM - Filtro</option>
-				<option value="640R2">640R2 - Filtro</option>
-				<option value="PAD">PAD - Filtro</option>
-				<option value="PADPANE">PADPANE - Filtro</option>
-				<option value="J10">J10 - Filtro</option>
-				<option value="PREJ">PREJ - Filtro</option>
-				<option value="PREJB2">PREJB2 - Filtro</option>
-				<option value="PREJC">PREJC - Fitro</option>
-				<option value="PREJM">PREJM - Filtro</option>
-				<option value="PREJS">PREJS - Filtro</option>
-				<option value="PREJS2">PREJS2 - Filtro</option>
-				<option value="PRESPER">PRESPER - Filtro</option>
-				<option value="RO">RO - Filtro</option>
-				<option value="ROCAI">ROCAI - Filtro</option>
-				<option value="ROPAFV">ROPAFV - Filtro</option>
-			</select><br>
-			<label><strong>Tipo:</strong></label>
-			<select name="tipo_etp1" class="form-control" >
-				<option></option>
-				<option value="Cartucho / Rígido">Cartucho / Rígido</option>
-				<option value="Bolsa">Bolsa</option>
-				<option value="Prefiltro">Prefiltro</option>
-			</select><br>
-			<label><strong>Eficiencia:</strong></label>
-			<select name="eficiencia_etp1" class="form-control" >
-				<option></option>
-				<option value="30-35%">30-35% ASHRAE</option>
-				<option value="30-50%">30-50% ASHRAE</option>
-				<option value="40-45%">40-45% ASHRAE</option>
-				<option value="40%">40% ASHRAE</option>
-				<option value="45%">45% ASHRAE</option>
-				<option value="50-55%">50-55% ASHRAE</option>
-				<option value="60-65%">60-65% ASHRAE</option>
-				<option value="70%">70% Gravimétrica</option>
-				<option value="70-75%">70-75% ASHRAE</option>
-				<option value="80%">80% Gravimétrica</option>
-				<option value="80-85%">80-85% ASHRAE</option>
-				<option value="85%">85% Gravimétrica</option>
-				<option value="90-95%">90-95% ASHRAE</option>
-				<option value="95%">95% PAO</option>
-				<option value="98% ASHRAE">98% ASHRAE</option>
-				<option value="98% PAO">98% PAO</option>
-				<option value="99%">99% en separación gotas de agua >= 10 micras</option>
-				<option value="99.90%">99.90% en Polvo Fino, 99.95% en Polvo Grueso</option>
-				<option value="99.97%">99.97% PAO</option>
-				<option value="99.99%">99.99% PAO</option>
-				<!--option value="Alta colección de partículas de 2 a 3 micras">Alta colección de partículas de 2 a 3 micras</option-->
-				<option value="EU5">EU5</option>
-				<option value="99.995%">99.995% PAO</option>
-				<option value="99.997%">99.997% PAO</option>
-				<option value="99.998%">99.998% PAO</option>
-				<option value="99.999%">99.999% PAO</option>
-				<option value="99.9995%">99.9995% PAO</option>
-			</select><br>
-			<label><strong>Gasto:</strong></label>
-			<input type="text" name="gasto_etp1" class="form-control"  placeholder="Ingresa el gasto" maxlength="20"><br>
-			<label><strong>Alto Nominal:</strong></label>
-			<input type="number" min="0" step="any" name="alto_nom_etp1" class="form-control"  placeholder="Ingresa el alto" maxlength="10"><br>
-			<label><strong>Frente Nominal:</strong></label>
-			<input type="number" min="0" step="any" name="frente_nom_etp1" class="form-control"  placeholder="Ingresa el frente" maxlength="10"><br>
-			<label><strong>Fondo Nominal:</strong></label>
-			<input type="number" min="0" step="any" name="fondo_nom_etp1" class="form-control"  placeholder="Ingresa el fondo" maxlength="10"><br>
-			<label><strong>Unidad de Medida Nominal:</strong></label>
-			<select name="um_nominal_etp1" class="form-control" >
-				<option></option>
-				<option value="in">Pulgadas</option>
-				<option value="mm">Milímetros</option>
-				<option value="cm">Centímetros</option>
-				<option value="ft">Pies</option>
-				<option value="m">Metros</option>
-			</select><br>
-			<label><strong>Material del marco:</strong></label>
-			<select name="marco_etp1" class="form-control" >
-				<option></option>
-				<option value="Acero Inoxidable">Acero Inoxidable</option>
-				<option value="Aluminio">Aluminio</option>
-				<option value="Carton con cinta plastica">Cartón con cinta plástica</option>
-				<option value="Lamina galvanizada">Lámina galvanizada</option>
-				<option value="Carton">Cartón</option>
-				<option value="Madera">Madera</option>
-				<option value="Plastico">Plástico</option>
-				<!--option value="Poliuretano">Poliuretano</option>
-				<option value="Triplay">Triplay</option-->
-			</select><br>
-			<label><strong>Espesor del marco:</strong></label>
-			<input type="number" min="0" name="espesor_etp1" step="any" class="form-control"  placeholder="Agrega el espesor del marco" maxlength="10"><br>
-			<label><strong>Unidad de Medida Espesor:</strong></label>
-			<select name="um_espesor_etp1" class="form-control" >
-				<option></option>
-				<option value="in">Pulgadas</option>
-				<option value="mm">Milímetros</option>
-				<option value="cm">Centímetros</option>
-				<option value="ft">Pies</option>
-				<option value="m">Metros</option>
-			</select><br>
-			<label><strong>Media Filtrante:</strong></label>
-			<select name="media_fil_etp1" class="form-control" >
-				<option></option>
-				<option value="Aluminio multicapas">Aluminio multicapas</option>
-				<option value="Borosilicato">Borosilicato</option>
-				<option value="Carbon activado granulado">Carbón activado granulado</option>
-				<option value="Carbon activado impregnado">Carbón activado impregnado</option>
-				<option value="Carbon activado y permanganato de potasio">Carbón activado y permanganato de potasio</option>
-				<option value="Celulosa">Celulosa</option>
-				<option value="Fibra de vidrio">Fibra de vidrio</option>
-				<option value="Fibra de vidrio con solucion tackifier impregnada">Fibra de vidrio con solución tackifier impregnada</option>
-				<option value="Fibra de vidrio intercambiable">Fibra de vidrio intercambiable</option>
-				<option value="Fibra sintetica">Fibra sintética</option>
-				<option value="Fibra sintetica autosoportable">Fibra sintética autosoportable</option>
-				<option value="Fibra sintetica con malla desplegada">Fibra sintética con malla desplegada</option>
-				<option value="Fibra sintetica con solución tackifier impregnada">Fibra sintética con solución tackifier impregnada</option>
-				<option value="Fibra sintetica impregnada con carbon activado">Fibra sintética impregnada con carbón activado</option>
-				<option value="Fibra sintetica intercambiable">Fibra sintética intercambiable</option>
-				<option value="Fibra sintetica y fibra de vidrio">Fibra sintética y fibra de vidrio</option>
-				<option value="HOGHAIR">HOGHAIR</option>
-				<option value="Mallas de acero inoxidable">Mallas de acero inoxidable</option>
-				<option value="Mallas de aluminio">Mallas de aluminio</option>
-				<option value="Mallas de aluminio y fibra sintetica intermedia">Mallas de aluminio y fibra sintética intermedia</option>
-				<option value="Mallas de lamina galvanizada">Mallas de lámina galvanizada</option>
-				<option value="Mallas metálicas y fibra sintetica intermedia">Mallas metálicas y fibra sintética intermedia</option>
-				<option value="Mallas metalicas y fibra sintetica intercambiable">Mallas metálicas y fibra sintética intercambiable</option>
-				<option value="Microfibra de vidrio">Microfibra de vidrio</option>
-				<option value="Paint arrestor de fibra de vidrio">Paint arrestor de fibra de vidrio</option>
-				<option value="Paint arrestor sintetico ">Paint arrestor sintético </option>
-				<option value="Permanganato de potasio">Permanganato de potasio</option>
-				<option value="Poroflex">Poroflex</option>
-			</select><br>
-			<label><strong>Forma de la Media Filtrante:</strong></label>
-			<select name="forma_media_fil_etp1" class="form-control" >
-				<option></option>
-				<option value="Plegada">Plegada</option>
-				<option value="Liso">Liso</option>
-				<option value="Lisas y plegadas alternas verticales">Lisas y plegadas alternas verticales</option>
-				<option value="Lisas y plegadas alternas horizontales">Lisas y plegadas alternas horizontales</option>
-			</select><br>
-			<label><strong>Color de la Media Filtrante:</strong></label>
-			<select name="color_media_fil_etp1" class="form-control" >
-				<option></option>
-				<option value="Amarilla">Amarilla</option>
-				<option value="Azul">Azul</option>
-				<option value="Azul con blanco">Azul con blanco</option>
-				<option value="Blanca">Blanca</option>
-				<option value="Naranja (salmón)">Naranja (salmón)</option>
-				<option value="Negra">Negra</option>
-				<option value="Rojo con blanco">Rojo con blanco</option>
-				<option value="Rosa">Rosa</option>
-				<option value="Verde">Verde</option>
-				<option value="Verde con blanco">Verde con blanco</option>
-			</select><br>
-			<label><strong>Bolsas:</strong></label>
-			<input type="number" min="0" name="bolsas_etp1" class="form-control"  placeholder="Ingresa el número de bolsas" maxlength="5"><br>
-			<label><strong>Media adherida al marco:</strong></label>
-			<select name="media_ad_etp1" class="form-control" >
-				<option></option>
-				<option value="No aplica">No aplica</option>
-				<option value="Si">Si</option>
-			</select><br>
-			<label><strong>Número de Separadores:</strong></label>
-			<input type="number" min="0" name="num_separadores_etp1" class="form-control"  placeholder="Ingresa el número de separadores" maxlength="5"><br>
-			<label><strong>Separador:</strong></label>
-			<select name="separador_etp1" class="form-control" >
-				<option></option>
-				<option value="N/A">No aplica</option>
-				<option value="Minipleat">Minipleat</option>
-				<option value="Kraft">Kraft</option>
-				<option value="Aluminio">Aluminio</option>
-				<option value="Plastico">Plástico</option>
-				<option value="Peine Plastico">Peine Plástico</option>
-			</select><br>
-			<label><strong>Asa:</strong></label>
-			<select name="asa_etp1" class="form-control" >
-				<option></option>
-				<option value="1">1</option>
-				<option value="2">2</option>
-			</select><br>
-			<label><strong>Plenum:</strong></label>
-			<select name="plenum_etp1" class="form-control" >
-				<option></option>
-				<option value="N/A">No aplica</option>
-				<option value="Entrada Aire">Entrada Aire</option>
-				<option value="Salida Aire">Salida Aire</option>
-				<option value="Entrada y Salida de Aire">Entrada y Salida de Aire</option>
-			</select><br>
-			<label><strong>Postes:</strong></label>
-			<select name="postes_etp1" class="form-control" >
-				<option></option>
-				<option value="Plastico">Plástico</option>
-				<option value="Metalicos">Metálicos</option>
-				<option value="Lamina Galvanizada">Lámina Galvanizada</option>
-			</select><br>
-			<label><strong>Rejilla:</strong></label>
-			<select name="rejilla_etp1" class="form-control" >
-				<option></option>
-				<option value="No aplica">No aplica</option>
-				<option value="Entrada Aire">Entrada Aire</option>
-				<option value="Salida Aire">Salida Aire</option>
-				<option value="Entrada y Salida de Aire">Entrada y Salida de Aire</option>
-			</select><br>
-			<label><strong>Contramarco:</strong></label>
-			<select name="contramarco_etp1" class="form-control" >
-				<option></option>
-				<option value="N/A">No aplica</option>
-				<option value="Entrada Aire">Entrada Aire</option>
-				<option value="Salida Aire">Salida Aire</option>
-				<option value="Entrada y Salida de Aire">Entrada y Salida de Aire</option>
-			</select><br>
-			<label><strong>Construcción:</strong></label>
-			<select name="construccion_etp1" class="form-control" >
-				<option></option>
-				<option value="No aplica">No aplica</option>
-				<option value="W">W</option>
-			</select><br>
-			<label><strong>Sello:</strong></label>
-			<select name="sello_etp1" class="form-control" >
-				<option></option>
+				//Encontar la familia existente
+				$f_family = $s_family->fetchAll();
+
+				foreach ($f_family as $item) {
+				$familia = $item -> familia_etp1;
+				}
+
+				//Buscar modelo existente
+				$s_model = $con->prepare("SELECT modelo_etp1 FROM levantamientos WHERE uma = :uma");
+				$s_model->bindValue(':uma', $uma);
+				$s_model->setFetchMode(PDO::FETCH_OBJ);
+				$s_model->execute();
+
+				//Encontrar el modelo existente
+				$f_model = $s_model->fetchAll();
+
+				foreach ($f_model as $value) {
+				$modelo = $value -> modelo_etp1;
+				}
+
+				if ($familia == NULL) { ?>
+
+				<div class="card">
+				<div class="card bg-danger text-white"><center><h6><strong>Selecciona la familia con la que trabajarás</strong></h6></center></div>
+				</div>
+
+				<!----------------------------
+				LISTADO DE FAMILIAS DE FILTROS
+				----------------------------->
+				<div class="card bg-black text-white"><center><h6><strong><?php echo'Código de filtro '.$ciclo.' de '.$filtros.''; ?></strong></h6></center></div>
+				<form class="border border-danger form-control"  method="POST" action="../../../config/functions/add/insert_fam.php?<?php echo $uma; ?>">
+				<label><strong>Familia:</strong></label>
+				<select name="familia" class="form-control" id="familia" required>
+				<option value=""> - Selecciona la familia - </option>
+				<option value="HEPA">ABS - Absolutos (HEPA)</option>
+				</select><br>
+				<input type="hidden" value="1" name="etapa">
+				<input type="hidden" value="1" name="ciclo">
+				<center><input class="btn btn-success" type="submit" value="Guardar" name="guardar_familia"></center>
+				</form>
+
+				<?php } elseif ($modelo == NULL) { ?>
+
+				<div class="card">
+				<div class="card bg-danger text-white"><center><h6><strong>Selecciona el modelo con la que trabajarás</strong></h6></center></div>
+				</div>
+
+				<!------------------------------------------------
+				LISTADO DE MODELOS DE FILTROS EN BASE A LA FAMILIA
+				------------------------------------------------->
+				<div class="card bg-black text-white"><center><h6><strong><?php echo'Código de filtro '.$ciclo.' de '.$filtros.''; ?></strong></h6></center></div>
+				<form class="border border-danger form-control"  method="POST" action="../../../config/functions/add/insert_model.php?<?php echo $uma; ?>">
+				<label><strong>Modelo:</strong></label>
+
+				<?php
+				switch ($familia) {
+				case 'HEPA':?>
+				<select name="modelo" class="form-control" required>
+				<option value=""> - Selecciona el modelo - </option>
+				<option value="HE95T22SMMAGDF4R">HE95T22SMMAGDF4R - (Modelo de prueba)</option>
+				<option value="HET5WSMML2500">HET5WSMML2500 - (Modelo de prueba)</option>
+				</select><br>
+				<?php
+				break;
+				}
+				?>
+
+				<input type="hidden" value="1" name="etapa">
+				<input type="hidden" value="1" name="ciclo">
+				<center><input class="btn btn-success" type="submit" value="Guardar" name="guardar_modelo"></center>
+				</form>
+
+				<?php } else { ?>
+
+				<div class="card">
+				<div class="card bg-black text-white"><center><h6><strong><?php echo'Código de filtro '.$ciclo.' de '.$filtros.''; ?></strong></h6></center></div>
+				<div class="card bg-danger text-white"><center><h6><strong>ETAPA 1</strong></h6></center></div>
+				</div>
+
+				<form class="border border-danger form-control"  method="POST" action="../../../config/permissions/add/add_stage1.php" enctype="multipart/form-data">
+				<?php
+				switch ($familia) {
+				case 'HEPA': ?>
+				<label><strong>Modelo:</strong></label><br>
+				<label><strong><h3><u><?php echo $modelo; ?></u></h3></strong></label><br><br>
+
+				<label><strong>Sello:</strong></label>
+				<select name="sello_etp1" id="sello" class="form-control" required onclick="toggle(this)">
+				<option value="0"> - Elige el tipo de sello - </option>
 				<option value="Neopreno">Neopreno</option>
 				<option value="Gel">Gel</option>
-			</select><br>
-			<label><strong>Perfil del Gel:</strong></label>
-			<select name="perfil_gel_etp1" class="form-control" >
-				<option></option>
-				<option value="No aplica">No aplica</option>
-				<option value="Difusor">Difusor</option>
-				<option value="Modulo">Módulo</option>
-				<option value="Difusor tipo F">Difusor tipo F</option>
-			</select><br>
-			<label><strong>Empaque:</strong></label>
-			<select name="ubicacion_gel_etp1" class="form-control" >
-				<option></option>
-				<option value="N/A">No aplica</option>
+				</select><br>
+
+				<!---------------------
+				DESPLEGABLE DE NEOPRENO
+				---------------------->
+				<div class="neopreno">
+				<label><strong>Código de Filtro:</strong></label>
+				<input type="text" name="codigo_etp1_neopreno" class="form-control"  placeholder="Ingresa el código del filtro correspondiente" maxlength="50"><br>
+
+				<label><strong>Eficiencia PAO:</strong></label>
+				<select name="eficiencia_etp1_neopreno" class="form-control">
+				<option> - Selecciona la eficiencia PAO - </option>
+				<option value="99.97%">99.97% PAO</option>
+				<option value="99.99%">99.99% PAO</option>
+				<option value="99.995%">99.995% PAO</option>
+				<option value="99.997%">99.997% PAO</option>
+				<option value="99.999%">99.999% PAO</option>
+				<option value="99.9995%">99.9995% PAO</option>
+				</select><br>
+
+				<label><strong>Plenum:</strong></label>
+				<select name="plenum_etp1_neopreno" class="form-control" >
+				<option> - Elige la opción adecuada - </option>
+				<option value="N/A">No aplica | Sin plenum</option>
 				<option value="Entrada Aire">Entrada Aire</option>
 				<option value="Salida Aire">Salida Aire</option>
-			</select><br>
-			<label><strong>Alta temperatura:</strong></label>
-			<select name="temperatura_etp1" class="form-control" >
-				<option></option>
+				<option value="Entrada y Salida de Aire">Entrada y Salida de Aire</option>
+				</select><br>
+
+				<label><strong>Tipo de marco:</strong></label>
+				<select name="marco_etp1_neopreno" class="form-control" >
+				<option> - Elige el tipo de marco correcto - </option>
+				<option value="Acero Inoxidable">Acero Inoxidable</option>
+				<option value="Aluminio">Aluminio</option>
+				<option value="Madera">Madera</option>
+				<option value="Lamina galvanizada">Lámina galvanizada</option>
+				</select><br>
+
+				<label><strong>Tipo de Construcción:</strong></label>
+				<select name="construccion_etp1_neopreno" class="form-control" >
+				<option> - Selecciona el tipo de construcción - </option>
 				<option value="No aplica">No aplica</option>
-				<option value="160">Hasta 160 Grados centígrados</option>
-				<option value="260">Hasta 260 Grados centígrados</option>
-				<option value="100">Hasta 100 Grados centígrados</option>
-				<option value="120">Hasta 120 Grados centígrados</option>
-				<option value="250">Hasta 250 Grados centígrados</option>
-				<option value="220">220 Grados centígrados</option>
-				<option value="750">750 Grados farenheit</option>
-				<option value="AT16">AT16 - hasta 160 Grados centígrados</option>
-				<option value="ATFDV">ATFDV - hasta 220 Grados centígrados</option>
-				<option value="AT12">AT12 - hasta 120 Grados centígrados</option>
-				<option value="900">900 Grados farenheit</option>
-				<option value="AT10">AT10 – hasta 100 Grados centígrados</option>
-				<option value="AT">AT – hasta 160 Grados centígrados</option>
-			</select><br>
-			<label><strong>Alma acero:</strong></label>
-			<select name="alma_acero_etp1" class="form-control" >
-				<option></option>
-				<option value="No aplica">No aplica</option>
+				<option value="Caja">Caja</option>
+				<option value="W">W</option>
+				</select><br>
+
+				<label><strong>Tipo de Separador:</strong></label>
+				<select name="separador_etp1_neopreno" class="form-control" >
+				<option> - Selecciona el tipo de separador - </option>
+				<option value="Minipleat">Minipleat</option>
+				<option value="Aluminio">Aluminio</option>
+				</select><br>
+
+				<label><strong>Alta Capacidad:</strong></label>
+				<select name="alta_capacidad_etp1_neopreno" class="form-control" onclick="alta_capa(this)">
+				<option value="0"> - Elige el valor que consideres correcto - </option>
 				<option value="Si">Si</option>
-			</select><br>
-			<label><strong>Invertido:</strong></label>
-			<select name="invertido_etp1" class="form-control" >
-				<option></option>
+				<option value="No">No</option>
+				</select><br>
+
+				<div class="alta_capa">
+				<input type="text" name="alta_capacidad_etp1_neopreno" class="form-control"  placeholder="Ingresa el valor correspondiente" maxlength="20"><br>
+				</div>
+
+				<label><strong>Rejilla:</strong></label>
+				<select name="rejilla_etp1_neopreno" class="form-control" >
+				<option> - Elige el tipo de rejilla - </option>
 				<option value="No aplica">No aplica</option>
-				<option value="Si">Si</option>
-			</select><br>
-			<label><strong>Alto Real:</strong></label>
-			<input type="number" min="0" step="any" name="alto_real_etp1" class="form-control"  placeholder="Ingresa el alto" maxlength="10"><br>
-			<label><strong>Frente Real:</strong></label>
-			<input type="number" min="0" step="any" name="frente_real_etp1" class="form-control"  placeholder="Ingresa el frente" maxlength="10"><br>
-			<label><strong>Fondo Real:</strong></label>
-			<input type="number" min="0" step="any" name="fondo_real_etp1" class="form-control"  placeholder="Ingresa el fondo" maxlength="10"><br>
-			<label><strong>Unidad de Medida Real:</strong></label>
-			<select name="um_real_etp1" class="form-control" >
-				<option></option>
+				<option value="Entrada Aire">Entrada Aire</option>
+				<option value="Salida Aire">Salida Aire</option>
+				<option value="Entrada y Salida de Aire">Entrada y Salida de Aire</option>
+				</select><br>
+
+				<label><strong>Fotos <i>(Opcional | La primera imagen será la que se muestre en el PDF)</i>:</strong></label>
+				<input type="file" name="foto_1_etp1_neopreno[]" class="form-control" accept="image/png, image/jpg, image/jpeg" multiple><br>
+				</div>
+
+				<!----------------
+				DESPLEGABLE DE GEL
+				----------------->
+				<div class="gel">
+				<label><strong>Código de Filtro:</strong></label>
+				<input type="text" name="codigo_etp1_gel" class="form-control"  placeholder="Ingresa el código del filtro correspondiente" maxlength="50"><br>
+
+				<label><strong>Eficiencia PAO:</strong></label>
+				<select name="eficiencia_etp1_gel" class="form-control" >
+				<option> - Selecciona la eficiencia PAO - </option>
+				<option value="99.97%">99.97% PAO</option>
+				<option value="99.99%">99.99% PAO</option>
+				<option value="99.995%">99.995% PAO</option>
+				<option value="99.997%">99.997% PAO</option>
+				<option value="99.999%">99.999% PAO</option>
+				<option value="99.9995%">99.9995% PAO</option>
+				</select><br>
+
+				<label><strong>Tipo de marco:</strong></label>
+				<select name="marco_etp1_gel" class="form-control" >
+				<option> - Elige el tipo de marco correcto - </option>
+				<option value="Acero Inoxidable">Acero Inoxidable</option>
+				<option value="Aluminio">Aluminio</option>
+				</select><br>
+
+				<label><strong>Tipo de Separador:</strong></label>
+				<select name="separador_etp1_gel" class="form-control" >
+				<option> - Selecciona el tipo de separador - </option>
+				<option value="Minipleat">Minipleat</option>
+				</select><br>
+
+				<label><strong>Perfil del Gel:</strong></label>
+				<select name="perfil_gel_etp1_gel" class="form-control" >
+				<option> - Elige el perfil - </option>
+				<option value="No aplica">No aplica</option>
+				<option value="Entrada de Aire">Entrada de Aire</option>
+				<option value="Salida de Aire">Salida de Aire</option>
+				</select><br>
+
+				<label><strong>Fondo Nominal:</strong></label>
+				<select name="fondo_nom_etp1_gel" class="form-control" >
+				<option> - Elige las medidas correspondientes - </option>
+				<option value="5">5</option>
+				<option value="3.5">3.5</option>
+				<option value="2.875">2.875</option>
+				</select><br>
+
+				<label><strong>Unidad de Medida Nominal:</strong></label>
+				<select name="um_nominal_etp1_gel" class="form-control" >
+				<option> - Selecciona la unidad de medida disponible - </option>
 				<option value="in">Pulgadas</option>
-				<option value="mm">Milímetros</option>
-				<option value="cm">Centímetros</option>
-				<option value="ft">Pies</option>
-				<option value="m">Metros</option>
-			</select><br>
-			<label><strong>UM Venta:</strong></label>
-			<select name="um_venta_etp1" class="form-control" >
-				<option></option>
+				</select><br>
+
+				<label><strong>Rejilla:</strong></label>
+				<select name="rejilla_etp1_gel" class="form-control" >
+				<option> - Elige el tipo de rejilla - </option>
 				<option value="No aplica">No aplica</option>
-				<option value="Horas">Horas</option>
-				<option value="Juego">Juego</option>
-				<option value="Kilos">Kilos</option>
-				<option value="Metros">Metros</option>
-				<option value="Pies">Pies</option>
-				<option value="Piezas">Piezas</option>
-				<option value="Servicio">Servicio</option>
-				<option value="Metros cuadrados">Metros cuadrados</option>
-				<option value="Pies cuadrados">Pies cuadrados</option>
-			</select><br>
-			<label><strong>Marca:</strong></label>
-			<input type="text" name="marca_etp1" class="form-control"  placeholder="Ingresa la marca" maxlength="10"><br>
-			<label><strong>Capacidad:</strong></label>
-			<input type="number" min="0" name="capacidad_etp1" class="form-control"  placeholder="Ingresa la capacidad" maxlength="10"><br>
-			<label><strong>CPI:</strong></label>
-			<input type="number" min="0" name="cpi_etp1" class="form-control"  placeholder="Anota el valor correspondiente" maxlength="10"><br>
-			<label><strong>Capacidad Instalada:</strong></label>
-			<input type="number" min="0" name="capacidad_instalada_etp1" class="form-control"  placeholder="Ingresa la capacidad instalada" maxlength="10"><br>
+				<option value="Entrada Aire">Entrada Aire</option>
+				<option value="Salida Aire">Salida Aire</option>
+				<option value="Entrada y Salida de Aire">Entrada y Salida de Aire</option>
+				</select><br>
 
-			<p class="alert alert-warinig"><center><strong>8 MB</strong> Es el tamaño máximo permitido para fotografías e imágenes.</p></center><br>
+				<label><strong>Fotos <i>(Opcional | La primera imagen será la que se muestre en el PDF)</i>:</strong></label>
+				<input type="file" name="foto_1_etp1_gel[]" class="form-control" accept="image/png, image/jpg, image/jpeg" multiple><br>
+				</div>
 
-			<label><strong>Foto 1 <i>(Opcional | Esta será la que se muestra en el PDF)</i>:</strong></label>
-			<input type="file" name="foto_1_etp1" class="form-control"><br>
-			<label><strong>Foto 2 <i>(Opcional)</i>:</strong></label>
-			<input type="file" name="foto_2_etp1" class="form-control"><br>
-			<label><strong>Foto 3 <i>(Opcional)</i>:</strong></label>
-			<input type="file" name="foto_3_etp1" class="form-control"><br>
-			<label><strong>Foto 4 <i>(Opcional)</i>:</strong></label>
-			<input type="file" name="foto_4_etp1" class="form-control"><br><br>
-			<label><strong>Comentarios <i>(Opcional)</i>:</strong></label>
-			<textarea name="comentarios_etp1" class="form-control" placeholder="Agrega tus comentarios en este apartado"></textarea><br>
-			<label><strong>Observaciones <i>(Opcional)</i>:</strong></label>
-			<textarea name="observaciones_etp1" class="form-control" placeholder="Ingresa las observaciones pertinentes aquí"></textarea><br>
-			<center><button type="submit" class="btn btn-success" name="guardar_etp1"><strong>Guardar</strong></button></center><br>
-		</form><br>
-	</div>
+				<?php 
+				break;
+				}
+				?>
 
-</body>
-</html>
+				<center><button type="submit" class="btn btn-success" name="guardar_etp1"><strong>Guardar</strong></button></center><br>
+				</form><br>
 
-<?php include '../../../assets/subir.php'; ?>
+				<?php }?>
+
+				</div>
+
+				</body>
+				</html>
+					
+				<?php break;
+
+				case '2':
+				//Buscar si ya existe una familia registrada
+				$s_family = $con->prepare("SELECT familia_etp1_2 FROM levantamientos WHERE uma = :uma");
+				$s_family->bindValue(':uma', $uma);
+				$s_family->setFetchMode(PDO::FETCH_OBJ);
+				$s_family->execute();
+
+				//Encontar la familia existente
+				$f_family = $s_family->fetchAll();
+
+				foreach ($f_family as $item) {
+				$familia = $item -> familia_etp1_2;
+				}
+
+				//Buscar modelo existente
+				$s_model = $con->prepare("SELECT modelo_etp1_2 FROM levantamientos WHERE uma = :uma");
+				$s_model->bindValue(':uma', $uma);
+				$s_model->setFetchMode(PDO::FETCH_OBJ);
+				$s_model->execute();
+
+				//Encontrar el modelo existente
+				$f_model = $s_model->fetchAll();
+
+				foreach ($f_model as $value) {
+				$modelo = $value -> modelo_etp1_2;
+				}
+
+				if ($familia == NULL) { ?>
+
+				<div class="card">
+				<div class="card bg-danger text-white"><center><h6><strong>Selecciona la familia con la que trabajarás</strong></h6></center></div>
+				</div>
+
+				<!----------------------------
+				LISTADO DE FAMILIAS DE FILTROS
+				----------------------------->
+				<div class="card bg-black text-white"><center><h6><strong><?php echo'Código de filtro '.$ciclo.' de '.$filtros.''; ?></strong></h6></center></div>
+				<form class="border border-danger form-control"  method="POST" action="../../../config/functions/add/insert_fam.php?<?php echo $uma; ?>">
+				<label><strong>Familia:</strong></label>
+				<select name="familia" class="form-control" id="familia" required>
+				<option value=""> - Selecciona la familia - </option>
+				<option value="HEPA">ABS - Absolutos (HEPA)</option>
+				</select><br>
+				<input type="hidden" value="1" name="etapa">
+				<input type="hidden" value="2" name="ciclo">
+				<center><input class="btn btn-success" type="submit" value="Guardar" name="guardar_familia"></center>
+				</form>
+
+				<?php } elseif ($modelo == NULL) { ?>
+
+				<div class="card">
+				<div class="card bg-danger text-white"><center><h6><strong>Selecciona el modelo con la que trabajarás</strong></h6></center></div>
+				</div>
+
+				<!------------------------------------------------
+				LISTADO DE MODELOS DE FILTROS EN BASE A LA FAMILIA
+				------------------------------------------------->
+				<div class="card bg-black text-white"><center><h6><strong><?php echo'Código de filtro '.$ciclo.' de '.$filtros.''; ?></strong></h6></center></div>
+				<form class="border border-danger form-control"  method="POST" action="../../../config/functions/add/insert_model.php?<?php echo $uma; ?>">
+				<label><strong>Modelo:</strong></label>
+
+				<?php
+				switch ($familia) {
+				case 'HEPA':?>
+				<select name="modelo" class="form-control" required>
+				<option value=""> - Selecciona el modelo - </option>
+				<option value="HE95T22SMMAGDF4R">HE95T22SMMAGDF4R - (Modelo de prueba)</option>
+				<option value="HET5WSMML2500">HET5WSMML2500 - (Modelo de prueba)</option>
+				</select><br>
+				<?php
+				break;
+				}
+				?>
+
+				<input type="hidden" value="1" name="etapa">
+				<input type="hidden" value="2" name="ciclo">
+				<center><input class="btn btn-success" type="submit" value="Guardar" name="guardar_modelo"></center>
+				</form>
+
+				<?php } else { ?>
+
+				<div class="card">
+				<div class="card bg-danger text-white"><center><h6><strong>ETAPA 1</strong></h6></center></div>
+				</div>
+
+				<form class="border border-danger form-control"  method="POST" action="../../../config/permissions/add/add_stage1.php" enctype="multipart/form-data">
+
+				<?php
+				switch ($familia) {
+				case 'HEPA': ?>
+				<label><strong>Modelo:</strong></label><br>
+				<label><strong><h3><u><?php echo $modelo; ?></u></h3></strong></label><br><br>
+
+				<label><strong>Sello:</strong></label>
+				<select name="sello_etp1_2" id="sello" class="form-control" required onclick="toggle(this)">
+				<option value="0"> - Elige el tipo de sello - </option>
+				<option value="Neopreno">Neopreno</option>
+				<option value="Gel">Gel</option>
+				</select><br>
+
+				<!---------------------
+				DESPLEGABLE DE NEOPRENO
+				---------------------->
+				<div class="neopreno">
+				<label><strong>Código de Filtro:</strong></label>
+				<input type="text" name="codigo_etp1_2_neopreno" class="form-control"  placeholder="Ingresa el código del filtro correspondiente" maxlength="50"><br>
+
+				<label><strong>Eficiencia PAO:</strong></label>
+				<select name="eficiencia_etp1_2_neopreno" class="form-control">
+				<option> - Selecciona la eficiencia PAO - </option>
+				<option value="99.97%">99.97% PAO</option>
+				<option value="99.99%">99.99% PAO</option>
+				<option value="99.995%">99.995% PAO</option>
+				<option value="99.997%">99.997% PAO</option>
+				<option value="99.999%">99.999% PAO</option>
+				<option value="99.9995%">99.9995% PAO</option>
+				</select><br>
+
+				<label><strong>Plenum:</strong></label>
+				<select name="plenum_etp1_2_neopreno" class="form-control" >
+				<option> - Elige la opción adecuada - </option>
+				<option value="N/A">No aplica | Sin plenum</option>
+				<option value="Entrada Aire">Entrada Aire</option>
+				<option value="Salida Aire">Salida Aire</option>
+				<option value="Entrada y Salida de Aire">Entrada y Salida de Aire</option>
+				</select><br>
+
+				<label><strong>Tipo de marco:</strong></label>
+				<select name="marco_etp1_2_neopreno" class="form-control" >
+				<option> - Elige el tipo de marco correcto - </option>
+				<option value="Acero Inoxidable">Acero Inoxidable</option>
+				<option value="Aluminio">Aluminio</option>
+				<option value="Madera">Madera</option>
+				<option value="Lamina galvanizada">Lámina galvanizada</option>
+				</select><br>
+
+				<label><strong>Tipo de Construcción:</strong></label>
+				<select name="construccion_etp1_2_neopreno" class="form-control" >
+				<option> - Selecciona el tipo de construcción - </option>
+				<option value="No aplica">No aplica</option>
+				<option value="Caja">Caja</option>
+				<option value="W">W</option>
+				</select><br>
+
+				<label><strong>Tipo de Separador:</strong></label>
+				<select name="separador_etp1_2_neopreno" class="form-control" >
+				<option> - Selecciona el tipo de separador - </option>
+				<option value="Minipleat">Minipleat</option>
+				<option value="Aluminio">Aluminio</option>
+				</select><br>
+
+				<label><strong>Alta Capacidad:</strong></label>
+				<select name="alta_capacidad_etp1_2_neopreno" class="form-control" onclick="alta_capa(this)">
+				<option value="0"> - Elige el valor que consideres correcto - </option>
+				<option value="Si">Si</option>
+				<option value="No">No</option>
+				</select><br>
+
+				<div class="alta_capa">
+				<input type="text" name="alta_capacidad_etp1_2_neopreno" class="form-control"  placeholder="Ingresa el valor correspondiente" maxlength="20"><br>
+				</div>
+
+				<label><strong>Rejilla:</strong></label>
+				<select name="rejilla_etp1_2_neopreno" class="form-control" >
+				<option> - Elige el tipo de rejilla - </option>
+				<option value="No aplica">No aplica</option>
+				<option value="Entrada Aire">Entrada Aire</option>
+				<option value="Salida Aire">Salida Aire</option>
+				<option value="Entrada y Salida de Aire">Entrada y Salida de Aire</option>
+				</select><br>
+
+				<label><strong>Fotos <i>(Opcional | La primera imagen será la que se muestre en el PDF)</i>:</strong></label>
+				<input type="file" name="foto_1_etp1_2_neopreno[]" class="form-control" accept="image/png, image/jpg, image/jpeg" multiple><br>
+				</div>
+
+				<!----------------
+				DESPLEGABLE DE GEL
+				----------------->
+				<div class="gel">
+				<label><strong>Código de Filtro:</strong></label>
+				<input type="text" name="codigo_etp1_2_gel" class="form-control"  placeholder="Ingresa el código del filtro correspondiente" maxlength="50"><br>
+
+				<label><strong>Eficiencia PAO:</strong></label>
+				<select name="eficiencia_etp1_2_gel" class="form-control" >
+				<option> - Selecciona la eficiencia PAO - </option>
+				<option value="99.97%">99.97% PAO</option>
+				<option value="99.99%">99.99% PAO</option>
+				<option value="99.995%">99.995% PAO</option>
+				<option value="99.997%">99.997% PAO</option>
+				<option value="99.999%">99.999% PAO</option>
+				<option value="99.9995%">99.9995% PAO</option>
+				</select><br>
+
+				<label><strong>Tipo de marco:</strong></label>
+				<select name="marco_etp1_2_gel" class="form-control" >
+				<option> - Elige el tipo de marco correcto - </option>
+				<option value="Acero Inoxidable">Acero Inoxidable</option>
+				<option value="Aluminio">Aluminio</option>
+				</select><br>
+
+				<label><strong>Tipo de Separador:</strong></label>
+				<select name="separador_etp1_2_gel" class="form-control" >
+				<option> - Selecciona el tipo de separador - </option>
+				<option value="Minipleat">Minipleat</option>
+				</select><br>
+
+				<label><strong>Perfil del Gel:</strong></label>
+				<select name="perfil_gel_etp1_2_gel" class="form-control" >
+				<option> - Elige el perfil - </option>
+				<option value="No aplica">No aplica</option>
+				<option value="Entrada de Aire">Entrada de Aire</option>
+				<option value="Salida de Aire">Salida de Aire</option>
+				</select><br>
+
+				<label><strong>Fondo Nominal:</strong></label>
+				<select name="fondo_nom_etp1_2_gel" class="form-control" >
+				<option> - Elige las medidas correspondientes - </option>
+				<option value="5">5</option>
+				<option value="3.5">3.5</option>
+				<option value="2.875">2.875</option>
+				</select><br>
+
+				<label><strong>Unidad de Medida Nominal:</strong></label>
+				<select name="um_nominal_etp1_2_gel" class="form-control" >
+				<option> - Selecciona la unidad de medida disponible - </option>
+				<option value="in">Pulgadas</option>
+				</select><br>
+
+				<label><strong>Rejilla:</strong></label>
+				<select name="rejilla_etp1_2_gel" class="form-control" >
+				<option> - Elige el tipo de rejilla - </option>
+				<option value="No aplica">No aplica</option>
+				<option value="Entrada Aire">Entrada Aire</option>
+				<option value="Salida Aire">Salida Aire</option>
+				<option value="Entrada y Salida de Aire">Entrada y Salida de Aire</option>
+				</select><br>
+
+				<label><strong>Fotos <i>(Opcional | La primera imagen será la que se muestre en el PDF)</i>:</strong></label>
+				<input type="file" name="foto_1_etp1_2_gel[]" class="form-control" accept="image/png, image/jpg, image/jpeg" multiple><br>
+				</div>
+
+				<?php 
+				break;
+				}
+				?>
+
+				<center><button type="submit" class="btn btn-success" name="guardar_etp1"><strong>Guardar</strong></button></center><br>
+				</form><br>
+
+				<?php }?>
+
+				</div>
+
+				</body>
+				</html>
+
+				<?php
+				break;
+
+				default:
+				echo '<script>alert("No hay valor en el ciclo: '.$ciclo.'. Por favor contácta al soporte técnico e inténtalo de nuevo")</script>';
+				echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/sel_tape.php?'.$uma.'">';
+				break;
+			}
+
+	} else {
+		echo '<script>alert("La cantidad de filtros son: '.$filtros.' y el ciclo lleva '.$ciclo.' ciclos")</script>';
+		echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/sel_tape.php?'.$uma.'">';
+	}
+}
+		
+} else {
+	echo '<meta http-equiv="refresh" content="0;../../../index.php">';
+}
+?>
 <script type="text/javascript" src="../../../js/subir.js"></script>
+<script type="text/javascript" src="../../../js/limite_img.js"></script>
+<script type="text/javascript" src="../../../js/functions.js"></script>

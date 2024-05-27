@@ -19,3 +19,7 @@
 	width: 20px;
 	border-radius: 10px;
 }
+
+.neopreno, .gel, .alta_capa {
+	display: none;
+}

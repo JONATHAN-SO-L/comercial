@@ -5,6 +5,7 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
     if (isset($_POST['guardar_familia'])) {
         $uma = $_SESSION['uma'];
         $etapa = $_POST['etapa'];
+        $ciclo = $_POST['ciclo'];
         $familia = $_POST['familia'];
     
         require '../../conex.php';
@@ -12,15 +13,85 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
         //Actualizar registro de la familia
         switch ($etapa) {
             case '1':
-            $up_fam = $con->prepare("UPDATE levantamientos SET familia_etp1 = ? WHERE uma = ?");
-            $up_fam->execute([$familia, $uma]);
             
-            if ($up_fam) {
-                echo '<script>alert("Se guardó correctamente la familia seleccionada: '.$familia.'")</script>';
-                echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/levantamiento_etp1.php?'.$uma.'">';
-            } else {
-                echo '<script>alert("Ocurrió un problema al intentar guardar la familia seleccioanda: '.$familia.'. Por favor inténtalo de nuevo")</script>';
-                echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/levantamiento_etp1.php?'.$uma.'">';
+            switch ($ciclo) {
+                case '1':
+                    $up_fam = $con->prepare("UPDATE levantamientos SET familia_etp1 = ? WHERE uma = ?");
+                    $up_fam->execute([$familia, $uma]);
+                    
+                    if ($up_fam) {
+                        echo '<script>alert("Se guardó correctamente la familia seleccionada: '.$familia.'")</script>';
+                        echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/levantamiento_etp1.php?'.$uma.'">';
+                    } else {
+                        echo '<script>alert("Ocurrió un problema al intentar guardar la familia seleccioanda: '.$familia.'. Por favor inténtalo de nuevo")</script>';
+                        echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/levantamiento_etp1.php?'.$uma.'">';
+                    }
+                break;
+
+                case '2':
+                    $up_fam = $con->prepare("UPDATE levantamientos SET familia_etp1_2 = ? WHERE uma = ?");
+                    $up_fam->execute([$familia, $uma]);
+                    
+                    if ($up_fam) {
+                        echo '<script>alert("Se guardó correctamente la familia seleccionada: '.$familia.'")</script>';
+                        echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/levantamiento_etp1.php?'.$uma.'">';
+                    } else {
+                        echo '<script>alert("Ocurrió un problema al intentar guardar la familia seleccioanda: '.$familia.'. Por favor inténtalo de nuevo")</script>';
+                        echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/levantamiento_etp1.php?'.$uma.'">';
+                    }
+                break;
+
+                case '3':
+                    $up_fam = $con->prepare("UPDATE levantamientos SET familia_etp1_3 = ? WHERE uma = ?");
+                    $up_fam->execute([$familia, $uma]);
+                    
+                    if ($up_fam) {
+                        echo '<script>alert("Se guardó correctamente la familia seleccionada: '.$familia.'")</script>';
+                        echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/levantamiento_etp1.php?'.$uma.'">';
+                    } else {
+                        echo '<script>alert("Ocurrió un problema al intentar guardar la familia seleccioanda: '.$familia.'. Por favor inténtalo de nuevo")</script>';
+                        echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/levantamiento_etp1.php?'.$uma.'">';
+                    }
+                break;
+
+                case '4':
+                    $up_fam = $con->prepare("UPDATE levantamientos SET familia_etp1_4 = ? WHERE uma = ?");
+                    $up_fam->execute([$familia, $uma]);
+                    
+                    if ($up_fam) {
+                        echo '<script>alert("Se guardó correctamente la familia seleccionada: '.$familia.'")</script>';
+                        echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/levantamiento_etp1.php?'.$uma.'">';
+                    } else {
+                        echo '<script>alert("Ocurrió un problema al intentar guardar la familia seleccioanda: '.$familia.'. Por favor inténtalo de nuevo")</script>';
+                        echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/levantamiento_etp1.php?'.$uma.'">';
+                    }
+                break;
+
+                case '5':
+                    $up_fam = $con->prepare("UPDATE levantamientos SET familia_etp1_5 = ? WHERE uma = ?");
+                    $up_fam->execute([$familia, $uma]);
+                    
+                    if ($up_fam) {
+                        echo '<script>alert("Se guardó correctamente la familia seleccionada: '.$familia.'")</script>';
+                        echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/levantamiento_etp1.php?'.$uma.'">';
+                    } else {
+                        echo '<script>alert("Ocurrió un problema al intentar guardar la familia seleccioanda: '.$familia.'. Por favor inténtalo de nuevo")</script>';
+                        echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/levantamiento_etp1.php?'.$uma.'">';
+                    }
+                break;
+
+                case '6':
+                    $up_fam = $con->prepare("UPDATE levantamientos SET familia_etp1_6 = ? WHERE uma = ?");
+                    $up_fam->execute([$familia, $uma]);
+                    
+                    if ($up_fam) {
+                        echo '<script>alert("Se guardó correctamente la familia seleccionada: '.$familia.'")</script>';
+                        echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/levantamiento_etp1.php?'.$uma.'">';
+                    } else {
+                        echo '<script>alert("Ocurrió un problema al intentar guardar la familia seleccioanda: '.$familia.'. Por favor inténtalo de nuevo")</script>';
+                        echo '<meta http-equiv="refresh" content="0;../../../admin/views/vendedor/levantamiento_etp1.php?'.$uma.'">';
+                    }
+                break;
             }
     
             break;

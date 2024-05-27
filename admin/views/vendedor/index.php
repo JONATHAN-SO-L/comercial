@@ -21,6 +21,10 @@ if ($_SESSION['nombre'] && $_SESSION['tipo']) {
 					</div>
 				</div>
 			</div>
+
+			<div class="pull-right col-sm-6">
+				<input class="form-control" type="search" name="search" id="search" placeholder="Ingresa la UMA que deseas consultar">
+			</div>
 		</div><br>
 
 	<!------------------------------
