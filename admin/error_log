@@ -1,0 +1,2 @@
+[04-May-2020 15:05:16 UTC] PHP Warning:  include(./inc/links.php): failed to open stream: No such file or directory in /home/veco/public_html/admin/ticket.php on line 13
+[04-May-2020 15:05:16 UTC] PHP Warning:  include(): Failed opening './inc/links.php' for inclusion (include_path='.:/opt/cpanel/ea-php71/root/usr/share/pear') in /home/veco/public_html/admin/ticket.php on line 13
